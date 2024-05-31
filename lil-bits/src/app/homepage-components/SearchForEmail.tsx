@@ -3,6 +3,7 @@ import { useCallback, useState } from "react";
 import { useOrder } from "../context/OrderContext";
 import { useRouter } from "next/navigation";
 import { api } from "../api/api";
+import styles from "../page.module.css";
 
 export default function SearchForEmail() {
   const [email, setEmail] = useState<string>("");
@@ -37,20 +38,31 @@ export default function SearchForEmail() {
     if (regexp.test(email)) {
       getOrdersFromServer(email);
     } else {
-      setError("No email found");
+      setError("Not a valid email");
     }
   };
 
   return (
-    <form onSubmit={handleVerifyClick}>
-      <input
-        type="text"
-        value={email}
-        onChange={handleEmailChange}
-        placeholder="Enter your email"
-      />
-      {error && <div>{error}</div>}
-      <input type="submit" value="Search for this email" />
-    </form>
+    <div className={styles.form_container}>
+      <form onSubmit={handleVerifyClick} className={styles.form}>
+        <input
+          type="text"
+          value={email}
+          onChange={handleEmailChange}
+          placeholder="Enter your email"
+          className={styles.form_input}
+        />
+        {error && (
+          <div className={styles.error_container}>
+            <div className={styles.error}>{error}</div>
+          </div>
+        )}
+        <input
+          type="submit"
+          value="Search for this email"
+          className={styles.submit_button}
+        />
+      </form>
+    </div>
   );
 }

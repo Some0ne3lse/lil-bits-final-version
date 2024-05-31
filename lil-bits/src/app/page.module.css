@@ -1,0 +1,141 @@
+.embla {
+  position: relative;
+  width: 80%;
+  height: auto;
+  margin: 10%;
+}
+
+.embla__viewport {
+  overflow: hidden;
+}
+.embla__container {
+  display: flex;
+}
+.embla__slide {
+  flex: 0 0 100%;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.carousel_images {
+  object-fit: cover;
+  border-radius: 1rem;
+}
+
+.carousel_button_left,
+.carousel_button_right {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.4);
+  position: absolute;
+  top: 50%;
+  transform: translateY(50%);
+  z-index: 10;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  color: black;
+  border: none;
+}
+
+.carousel_button_left {
+  left: 1rem;
+}
+.carousel_button_right {
+  right: 1rem;
+}
+
+.chevron_buttons {
+  height: 2rem;
+  width: 2rem;
+}
+
+.order_container,
+.error_container,
+.map_container,
+.form_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+.form_container {
+  margin: 1rem 0;
+  width: 100%;
+  padding: 0;
+}
+
+.order_box {
+  width: 80%;
+  background-color: white;
+
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.order_text {
+  color: #a86e5f;
+  font-weight: 500;
+  margin: 0.5rem;
+}
+
+.order_button {
+  margin: 0.5rem;
+}
+
+.submit_button {
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.order_button,
+.submit_button {
+  border: none;
+  background-color: #a86e5f;
+  border-radius: 0.5rem;
+  color: white;
+  padding: 0.5rem 1rem;
+}
+
+.order_button:hover {
+  background-color: #a5b381;
+}
+
+.form {
+  width: 80%;
+  background-color: rgb(255, 255, 255);
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form_input {
+  margin: 0.5rem;
+  border: 1px solid #a86e5f;
+  border-radius: 0.5rem;
+  padding: 0.25rem;
+  text-align: center;
+}
+
+.error {
+  color: red;
+  text-align: center;
+}
+
+.entire_map {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  background-color: white;
+}

@@ -7,6 +7,7 @@ import image1 from "../../../public/carousel/first-carousel-image.webp";
 import image2 from "../../../public/carousel/second-carousel-image.webp";
 import image3 from "../../../public/carousel/third-carousel-image.webp";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
+import styles from "../page.module.css";
 
 const carouselImages = [image1, image2, image3];
 
@@ -31,27 +32,27 @@ export default function TheCarousel() {
   }, [emblaApi]);
 
   return (
-    <div className="embla">
+    <div className={styles.embla}>
       <button
         aria-label="go to previous slide"
         onClick={scrollPrev}
-        className="carousel-button-left"
+        className={styles.carousel_button_left}
       >
-        <ChevronLeftIcon className="chevron-buttons" />
+        <ChevronLeftIcon className={styles.chevron_buttons} />
       </button>
       <button
         aria-label="go to previous slide"
         onClick={scrollNext}
-        className="carousel-button-right"
+        className={styles.carousel_button_right}
       >
-        <ChevronRightIcon className="chevron-buttons" />
+        <ChevronRightIcon className={styles.chevron_buttons} />
       </button>
-      <div className="embla__viewport" ref={emblaRef}>
-        <div className="embla__container">
+      <div className={styles.embla__viewport} ref={emblaRef}>
+        <div className={styles.embla__container}>
           {imageList.map((data, index) => (
-            <div className="embla__slide" key={index}>
+            <div className={styles.embla__slide} key={index}>
               <Image
-                className="carousel-images"
+                className={styles.carousel_images}
                 src={data}
                 width={0}
                 height={0}

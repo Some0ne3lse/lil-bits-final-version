@@ -44,11 +44,5 @@ export default function MapComponent() {
     return () => map.setTarget(null);
   }, [lilBitsWebMercator]);
 
-  return (
-    <div
-      style={{ height: "300px", width: "50%" }}
-      id="map"
-      className="map-container"
-    />
-  );
+  return <div style={{ height: "300px", width: "50%" }} id="map" />;
 }
