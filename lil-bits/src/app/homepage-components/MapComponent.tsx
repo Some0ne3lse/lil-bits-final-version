@@ -22,6 +22,16 @@ export default function MapComponent() {
       source: new OSM(),
     });
 
+    const vectorLayer = new VectorLayer({
+      source: new VectorSource({
+        features: [
+          new Feature({
+            geometry: new Point(lilBitsWebMercator),
+          }),
+        ],
+      }),
+    });
+
     const map = new Map({
       target: "map",
       layers: [osmLayer, vectorLayer],
@@ -30,18 +40,9 @@ export default function MapComponent() {
         zoom: 12,
       }),
     });
+    // @ts-ignore Package doesn't work correctly with typescript, and cannot set null as a type
     return () => map.setTarget(null);
-  }, []);
-
-  const vectorLayer = new VectorLayer({
-    source: new VectorSource({
-      features: [
-        new Feature({
-          geometry: new Point(lilBitsWebMercator),
-        }),
-      ],
-    }),
-  });
+  }, [lilBitsWebMercator]);
 
   return (
     <div

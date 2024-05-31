@@ -14,25 +14,10 @@ export default function AllMeals() {
   const { menuItems, setMenuItems } = useOrder();
   const { dish, setDish } = useOrder();
   const [error, setError] = useState<string | null>();
-  // ASK ABOUT ID, PRICE AND IMAGESOURCE NOT BEING THERE!
-
-  const mutatePreviousOrderToDish = () => {
-    if (menuItems && menuItems.dish) {
-      const dishCopy: Dish = { ...menuItems.dish };
-      setDish(dishCopy);
-    } else {
-      setError(
-        "No dish found with this email. Please start over, or continue with this random dish"
-      );
-      getRandomOrderFromServer();
-    }
-  };
 
   const getRandomOrderFromServer = useCallback(async () => {
     try {
       const fetchRandomOrder = await api.getRandomOrder();
-      // TODO: handle if meal api is down
-      // setRandomDish(fetchRandomOrder);
       setDish({
         id: fetchRandomOrder.meals[0].idMeal,
         price: 3000,
@@ -49,18 +34,23 @@ export default function AllMeals() {
         setError("Something went wrong. Please contact customer support");
       }
     }
-
-    // TODO: Find and set up eslint rule to make warning when deps items are missing
   }, [setDish]);
 
-  // Ask teach if dependency is ok empty
   useEffect(() => {
     if (!menuItems) {
       getRandomOrderFromServer();
     } else {
-      mutatePreviousOrderToDish();
+      if (menuItems && menuItems.dish) {
+        const dishCopy: Dish = { ...menuItems.dish };
+        setDish(dishCopy);
+      } else {
+        setError(
+          "No dish found with this email. Please start over, or continue with this random dish"
+        );
+        getRandomOrderFromServer();
+      }
     }
-  }, []);
+  }, [getRandomOrderFromServer, menuItems, setDish]);
 
   const resetForm = () => {
     setMenuItems(null);

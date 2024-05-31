@@ -10,18 +10,21 @@ export default function SearchForEmail() {
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
 
-  const getOrdersFromServer = useCallback(async (email: string) => {
-    const fetchOrders = await api.getOrders(email).catch((error) => {
-      setError(
-        error.message +
-          "' Please make sure you entered the correct email or contact customer service"
-      );
-    });
-    if (fetchOrders) {
-      setMenuItems(fetchOrders);
-      router.push("/select-dish");
-    }
-  }, []);
+  const getOrdersFromServer = useCallback(
+    async (email: string) => {
+      const fetchOrders = await api.getOrders(email).catch((error) => {
+        setError(
+          error.message +
+            "' Please make sure you entered the correct email or contact customer service"
+        );
+      });
+      if (fetchOrders) {
+        setMenuItems(fetchOrders);
+        router.push("/select-dish");
+      }
+    },
+    [router, setMenuItems]
+  );
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);

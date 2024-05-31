@@ -29,8 +29,6 @@ export default function DateAmountEmailForm() {
   const [date, setDate] = useState<Date | null>(null);
   const [count, setCount] = useState<number>(1);
   const [invalidAmount, setInvalidAmount] = useState<String | null>(null);
-  const [infoSubmitted, setInfoSubmitted] = useState<boolean>(false);
-  const [infoUpdated, setInfoUpdated] = useState<boolean>(false);
   const [totalPrice, setTotalPrice] = useState<number>(0);
   const [error, setError] = useState<string | null>(null);
   const [dateError, setDateError] = useState<string | null>(null);
@@ -43,40 +41,21 @@ export default function DateAmountEmailForm() {
       setCount(menuItems.count);
       setOrderEmail(menuItems.email);
     }
-  }, [menuItems]);
-
-  const calculateTotalPrice = () => {
-    if (drinks.length !== 0 && dish) {
-      const drinksPrice = drinks.map((drink) => drink.price);
-      const totalDrinksPrice = drinksPrice.reduce((acc, curr) => acc + curr);
-      const foodPrice = dish.price * count;
-
-      return totalDrinksPrice + foodPrice;
-    }
-    return 0;
-  };
+  }, [menuItems, setOrderEmail]);
 
   useEffect(() => {
+    const calculateTotalPrice = () => {
+      if (drinks.length !== 0 && dish) {
+        const drinksPrice = drinks.map((drink) => drink.price);
+        const totalDrinksPrice = drinksPrice.reduce((acc, curr) => acc + curr);
+        const foodPrice = dish.price * count;
+
+        return totalDrinksPrice + foodPrice;
+      }
+      return 0;
+    };
     setTotalPrice(calculateTotalPrice());
-  }, [count]);
-
-  useEffect(() => {
-    if (infoSubmitted && menuItems && !error) {
-      addOrder(menuItems);
-      setInfoSubmitted(false);
-    } else {
-      setInfoSubmitted(false);
-    }
-  }, [infoSubmitted]);
-
-  useEffect(() => {
-    if (infoUpdated && menuItems && !error) {
-      updateOrder(menuItems);
-      setInfoUpdated(false);
-    } else {
-      setInfoUpdated(false);
-    }
-  }, [infoUpdated]);
+  }, [count, dish, drinks]);
 
   const updateOrder = (orderObject: OrderType) => {
     api
@@ -117,17 +96,18 @@ export default function DateAmountEmailForm() {
 
   const onSubmitData = (data: FormFieldsType) => {
     if (!menuItems) {
-      setMenuItems({
+      const newMenuItems = {
         email: data.email,
         dish: dish,
         drinks: drinks,
         count: data.count,
         date: data.date,
         price: totalPrice,
-      });
-      setInfoSubmitted(true);
+      };
+      setMenuItems(newMenuItems);
+      addOrder(newMenuItems);
     } else if (menuItems) {
-      setMenuItems({
+      const newMenuItems = {
         ...menuItems,
         email: data.email,
         dish: dish,
@@ -135,12 +115,13 @@ export default function DateAmountEmailForm() {
         count: count,
         date: data.date,
         price: totalPrice,
-      });
-      setInfoUpdated(true);
+      };
+      setMenuItems(newMenuItems);
+      updateOrder(newMenuItems);
     } else {
-      alert("Missing object");
-      setInfoSubmitted(false);
-      setInfoUpdated(false);
+      setError(
+        "Some items are missing from your order. Please try again or contact customer support"
+      );
     }
   };
 

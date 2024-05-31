@@ -7,7 +7,7 @@ import { useOrder } from "@/app/context/OrderContext";
 import { DrinkApiType, DrinksResponse } from "@/app/types/types";
 
 export default function AllDrinks() {
-  const { drinks, setDrinks, menuItems, setMenuItems } = useOrder();
+  const { setDrinks, menuItems, setMenuItems } = useOrder();
   const [error, setError] = useState<string | null>();
 
   const [allDrinksFromServer, setAllDrinksFromServer] =
@@ -28,16 +28,7 @@ export default function AllDrinks() {
 
   useEffect(() => {
     getAllDrinksFromServer();
-  }, []);
-
-  const mutatePreviousOrderToDrinks = () => {
-    if (menuItems) {
-      setDrinks([...menuItems.drinks]);
-    } else {
-      setDrinks([]);
-      setError("No drinks found in this order");
-    }
-  };
+  }, [getAllDrinksFromServer]);
 
   const selectDrink = (event: DrinkApiType) => {
     setDrinks((drinks) => [
@@ -55,13 +46,11 @@ export default function AllDrinks() {
 
   useEffect(() => {
     if (menuItems) {
-      mutatePreviousOrderToDrinks();
+      setDrinks([...menuItems.drinks]);
+    } else {
+      setDrinks([]);
     }
-  }, []);
-
-  useEffect(() => {
-    console.log(drinks);
-  }, [drinks]);
+  }, [menuItems, setDrinks]);
 
   const resetForm = () => {
     setMenuItems(null);
