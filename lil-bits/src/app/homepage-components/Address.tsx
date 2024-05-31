@@ -3,8 +3,8 @@ import styles from "../page.module.css";
 export default function Address() {
   return (
     <div className={styles.map_container}>
-      <div className={styles.entire_map}>
-        <div>Come by our restaurant!</div>
+      <div className={styles.map_box}>
+        <div className={styles.map_text}>Come by our restaurant!</div>
         <MapComponent />
       </div>
     </div>

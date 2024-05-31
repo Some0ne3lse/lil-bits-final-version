@@ -9,6 +9,7 @@ import Feature from "ol/Feature.js";
 import VectorLayer from "ol/layer/Vector.js";
 import VectorSource from "ol/source/Vector.js";
 import Point from "ol/geom/Point.js";
+import styles from "../page.module.css";
 
 export default function MapComponent() {
   // Used chatGPT for the coordinates here
@@ -44,5 +45,11 @@ export default function MapComponent() {
     return () => map.setTarget(null);
   }, [lilBitsWebMercator]);
 
-  return <div style={{ height: "300px", width: "50%" }} id="map" />;
+  return (
+    <div
+      style={{ height: "300px", width: "80%" }}
+      id="map"
+      className={styles.the_map}
+    />
+  );
 }

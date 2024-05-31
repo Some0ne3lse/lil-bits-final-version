@@ -59,7 +59,7 @@ export default function SearchForEmail() {
         )}
         <input
           type="submit"
-          value="Search for this email"
+          value="Search for your order with email"
           className={styles.submit_button}
         />
       </form>

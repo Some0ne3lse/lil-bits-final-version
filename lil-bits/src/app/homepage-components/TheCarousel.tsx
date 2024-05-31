@@ -32,37 +32,39 @@ export default function TheCarousel() {
   }, [emblaApi]);
 
   return (
-    <div className={styles.embla}>
-      <button
-        aria-label="go to previous slide"
-        onClick={scrollPrev}
-        className={styles.carousel_button_left}
-      >
-        <ChevronLeftIcon className={styles.chevron_buttons} />
-      </button>
-      <button
-        aria-label="go to previous slide"
-        onClick={scrollNext}
-        className={styles.carousel_button_right}
-      >
-        <ChevronRightIcon className={styles.chevron_buttons} />
-      </button>
-      <div className={styles.embla__viewport} ref={emblaRef}>
-        <div className={styles.embla__container}>
-          {imageList.map((data, index) => (
-            <div className={styles.embla__slide} key={index}>
-              <Image
-                className={styles.carousel_images}
-                src={data}
-                width={0}
-                height={0}
-                sizes="100vw"
-                style={{ width: "100%", height: "auto", borderRadius: 8 }}
-                alt="Image of one of our dishes"
-                priority
-              />
-            </div>
-          ))}
+    <div className={styles.carousel_container}>
+      <div className={styles.embla}>
+        <button
+          aria-label="go to previous slide"
+          onClick={scrollPrev}
+          className={styles.carousel_button_left}
+        >
+          <ChevronLeftIcon className={styles.chevron_buttons} />
+        </button>
+        <button
+          aria-label="go to previous slide"
+          onClick={scrollNext}
+          className={styles.carousel_button_right}
+        >
+          <ChevronRightIcon className={styles.chevron_buttons} />
+        </button>
+        <div className={styles.embla__viewport} ref={emblaRef}>
+          <div className={styles.embla__container}>
+            {imageList.map((data, index) => (
+              <div className={styles.embla__slide} key={index}>
+                <Image
+                  className={styles.carousel_images}
+                  src={data}
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  style={{ width: "100%", height: "auto", borderRadius: 8 }}
+                  alt="Image of one of our dishes"
+                  priority
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
