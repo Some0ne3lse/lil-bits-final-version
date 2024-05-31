@@ -8,12 +8,12 @@ type AmountPickerType = {
   count: Number;
 };
 
-export default function AmountPicker({
+const AmountPicker = ({
   decreaseAmount,
   increaseAmount,
   invalidAmount,
   count: count,
-}: AmountPickerType) {
+}: AmountPickerType) => {
   return (
     <>
       <h2>Select amount of people</h2>
@@ -23,4 +23,6 @@ export default function AmountPicker({
       {invalidAmount && <div>{invalidAmount}</div>}
     </>
   );
-}
+};
+
+export default AmountPicker;

@@ -7,7 +7,6 @@ import ReturnToHomepage from "@/app/global-components/ReturnToHomepage";
 import SubmitDish from "./SubmitDish";
 import { useOrder } from "@/app/context/OrderContext";
 import { Dish } from "@/app/types/types";
-
 import { useCallback, useEffect, useState } from "react";
 
 export default function AllMeals() {
