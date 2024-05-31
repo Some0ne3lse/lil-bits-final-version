@@ -45,6 +45,9 @@ export default function SearchForEmail() {
   return (
     <div className={styles.form_container}>
       <form onSubmit={handleVerifyClick} className={styles.form}>
+        <label className={styles.form_label}>
+          Search for your order via email address
+        </label>
         <input
           type="text"
           value={email}
@@ -52,16 +55,13 @@ export default function SearchForEmail() {
           placeholder="Enter your email"
           className={styles.form_input}
         />
+
         {error && (
           <div className={styles.error_container}>
             <div className={styles.error}>{error}</div>
           </div>
         )}
-        <input
-          type="submit"
-          value="Search for your order with email"
-          className={styles.submit_button}
-        />
+        <input type="submit" value="Search" className={styles.submit_button} />
       </form>
     </div>
   );
