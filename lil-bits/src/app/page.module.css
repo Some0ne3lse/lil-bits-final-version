@@ -117,6 +117,7 @@
 .error {
   color: red;
   text-align: center;
+  padding: 1rem;
 }
 
 .the_map {

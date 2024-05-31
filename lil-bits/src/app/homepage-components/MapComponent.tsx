@@ -47,7 +47,7 @@ const MapComponent = () => {
 
   return (
     <div
-      style={{ height: "300px", width: "80%" }}
+      style={{ height: "300px", width: "90%" }}
       id="map"
       className={styles.the_map}
     />
