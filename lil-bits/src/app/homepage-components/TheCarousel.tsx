@@ -14,7 +14,7 @@ const carouselImages = [image1, image2, image3];
 const shuffle = (array: StaticImageData[]) =>
   [...array].sort(() => Math.random() - 0.5);
 
-export default function TheCarousel() {
+const TheCarousel = () => {
   const [emblaRef, emblaApi] = UseEmblaCarousel({ loop: true }, [Autoplay()]);
 
   const [imageList, setImageList] = useState(carouselImages);
@@ -69,4 +69,6 @@ export default function TheCarousel() {
       </div>
     </div>
   );
-}
+};
+
+export default TheCarousel;

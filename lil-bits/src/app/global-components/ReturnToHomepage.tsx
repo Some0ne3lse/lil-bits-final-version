@@ -5,10 +5,7 @@ type ReturnToHomepageProps = {
   onClick: () => void;
 };
 
-export default function ReturnToHomepage({
-  text,
-  onClick,
-}: ReturnToHomepageProps) {
+const ReturnToHomepage = ({ text, onClick }: ReturnToHomepageProps) => {
   return (
     <div>
       <Link href="/" onClick={onClick}>
@@ -16,4 +13,6 @@ export default function ReturnToHomepage({
       </Link>
     </div>
   );
-}
+};
+
+export default ReturnToHomepage;

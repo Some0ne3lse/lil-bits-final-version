@@ -6,7 +6,7 @@ import Image from "next/image";
 import { useOrder } from "@/app/context/OrderContext";
 import { DrinkApiType, DrinksResponse } from "@/app/types/types";
 
-export default function AllDrinks() {
+const AllDrinks = () => {
   const { setDrinks, menuItems, setMenuItems } = useOrder();
   const [error, setError] = useState<string | null>();
 
@@ -83,4 +83,6 @@ export default function AllDrinks() {
       ))}
     </div>
   );
-}
+};
+
+export default AllDrinks;

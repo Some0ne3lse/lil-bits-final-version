@@ -4,7 +4,7 @@ import Footer from "@/app/global-components/Footer";
 import Header from "@/app/global-components/Header";
 import SubmitDrinks from "./components/SubmitDrinks";
 
-export default function SelectDrinks() {
+const SelectDrinks = () => {
   return (
     <main>
       <Header />
@@ -13,4 +13,6 @@ export default function SelectDrinks() {
       <Footer />
     </main>
   );
-}
+};
+
+export default SelectDrinks;

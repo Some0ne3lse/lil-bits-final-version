@@ -5,7 +5,7 @@ type LinkProps = {
   text: string;
 };
 
-export default function LinkButton({ link, text }: LinkProps) {
+const LinkButton = ({ link, text }: LinkProps) => {
   return (
     <div>
       <Link href={link}>
@@ -13,4 +13,6 @@ export default function LinkButton({ link, text }: LinkProps) {
       </Link>
     </div>
   );
-}
+};
+
+export default LinkButton;

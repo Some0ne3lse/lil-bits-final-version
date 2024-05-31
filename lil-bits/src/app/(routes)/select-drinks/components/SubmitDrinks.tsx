@@ -6,7 +6,7 @@ type SubmitDrinkType = {
   drinks: string;
 };
 
-export default function SubmitDrinks() {
+const SubmitDrinks = () => {
   const { drinks } = useOrder();
 
   if (drinks.length === 0) {
@@ -28,4 +28,6 @@ export default function SubmitDrinks() {
       <LinkButton link="/order-screen" text="Continue to Order screen" />
     </>
   );
-}
+};
+
+export default SubmitDrinks;

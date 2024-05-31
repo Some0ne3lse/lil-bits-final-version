@@ -10,11 +10,11 @@ export const metadata: Metadata = {
   description: "The place to get your food",
 };
 
-export default function RootLayout({
+const RootLayout = ({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
+}>) => {
   return (
     <html lang="en">
       <OrderProvider>
@@ -22,4 +22,6 @@ export default function RootLayout({
       </OrderProvider>
     </html>
   );
-}
+};
+
+export default RootLayout;

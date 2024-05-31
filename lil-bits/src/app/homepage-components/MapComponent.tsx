@@ -11,8 +11,8 @@ import VectorSource from "ol/source/Vector.js";
 import Point from "ol/geom/Point.js";
 import styles from "../page.module.css";
 
-export default function MapComponent() {
-  // Used chatGPT for the coordinates here
+const MapComponent = () => {
+  // Used chatGPT to enter correct coordinates here
 
   const lilBitsLonLat = [-118.43986782975233, 34.23507972862415];
   const lilBitsWebMercator = fromLonLat(lilBitsLonLat);
@@ -52,4 +52,6 @@ export default function MapComponent() {
       className={styles.the_map}
     />
   );
-}
+};
+
+export default MapComponent;

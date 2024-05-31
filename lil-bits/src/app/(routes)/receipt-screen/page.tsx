@@ -6,7 +6,7 @@ import Receipt from "./components/Receipt";
 import ReturnToHomepage from "@/app/global-components/ReturnToHomepage";
 import Footer from "@/app/global-components/Footer";
 
-export default function ReceiptScreen() {
+const ReceiptScreen = () => {
   const { setMenuItems } = useOrder();
   const resetForm = () => {
     setMenuItems(null);
@@ -19,4 +19,6 @@ export default function ReceiptScreen() {
       <Footer />
     </main>
   );
-}
+};
+
+export default ReceiptScreen;

@@ -4,8 +4,8 @@ import { useOrder } from "@/app/context/OrderContext";
 import { OrderType } from "@/app/types/types";
 import { useCallback, useEffect, useState } from "react";
 
-export default function Receipt() {
-  const { menuItems, setMenuItems } = useOrder();
+const Receipt = () => {
+  const { menuItems } = useOrder();
   const [receipt, setReceipt] = useState<OrderType | null>(menuItems);
   const [error, setError] = useState<string | null>(null);
 
@@ -26,9 +26,9 @@ export default function Receipt() {
     if (menuItems) {
       getOrdersFromServer(menuItems?.email);
     } else {
-      setError("Something went wrong. Please try again");
+      setError("There was an issue getting your order. Please try again");
     }
-  }, []);
+  }, [getOrdersFromServer, menuItems]);
 
   const formatDate = (date: Date) => {
     return new Date(date).toLocaleDateString("en-GB", {
@@ -63,8 +63,10 @@ export default function Receipt() {
   } else {
     return (
       <>
-        <div>Something went wrong. Please try again</div>
+        <div>{error}</div>
       </>
     );
   }
-}
+};
+
+export default Receipt;

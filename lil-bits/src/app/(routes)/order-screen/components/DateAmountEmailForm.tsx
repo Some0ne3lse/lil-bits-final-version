@@ -16,7 +16,7 @@ type FormFieldsType = {
   count: number;
 };
 
-export default function DateAmountEmailForm() {
+const DateAmountEmailForm = () => {
   const {
     register,
     handleSubmit,
@@ -285,4 +285,6 @@ export default function DateAmountEmailForm() {
       </form>
     </>
   );
-}
+};
+
+export default DateAmountEmailForm;

@@ -2,7 +2,7 @@ import AllMeals from "./components/AllMeals";
 import Footer from "@/app/global-components/Footer";
 import Header from "@/app/global-components/Header";
 
-export default function SelectDish() {
+const SelectDish = () => {
   return (
     <main>
       <Header />
@@ -10,4 +10,6 @@ export default function SelectDish() {
       <Footer />
     </main>
   );
-}
+};
+
+export default SelectDish;

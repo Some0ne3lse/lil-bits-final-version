@@ -1,15 +1,14 @@
 "use client";
 import { api } from "@/app/api/api";
-import GenerateNewDish from "./GenerateNewdish";
 import MealDescription from "./MealDescription";
 import MealImage from "./MealImage";
 import ReturnToHomepage from "@/app/global-components/ReturnToHomepage";
-import SubmitDish from "./SubmitDish";
 import { useOrder } from "@/app/context/OrderContext";
 import { Dish } from "@/app/types/types";
 import { useCallback, useEffect, useState } from "react";
+import LinkButton from "@/app/global-components/LinkButton";
 
-export default function AllMeals() {
+const AllMeals = () => {
   const { menuItems, setMenuItems } = useOrder();
   const { dish, setDish } = useOrder();
   const [error, setError] = useState<string | null>();
@@ -71,8 +70,11 @@ export default function AllMeals() {
         description={dish.description}
         price={dish.price}
       />
-      <GenerateNewDish onClick={getRandomOrderFromServer} />
-      <SubmitDish dish={dish.name} />
+      <button onClick={getRandomOrderFromServer}>Generate new dish</button>
+      <div>You current order is: {dish.name}</div>
+      <LinkButton link="/select-drinks" text="Continue to drink selection" />
     </div>
   );
-}
+};
+
+export default AllMeals;

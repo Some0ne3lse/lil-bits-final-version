@@ -43,11 +43,11 @@ const OrderContext = createContext<OrderContextType>({
   setOrderEmail: () => String,
 });
 
-export function useOrder() {
+const useOrder = () => {
   return useContext(OrderContext);
-}
+};
 
-export function OrderProvider({ children }: OrderProviderProps) {
+const OrderProvider = ({ children }: OrderProviderProps) => {
   const [menuItems, setMenuItems] = useState<OrderType | null>(null);
   const [dish, setDish] = useState<Dish | null>(null);
   const [drinks, setDrinks] = useState<Drink[]>([]);
@@ -75,4 +75,6 @@ export function OrderProvider({ children }: OrderProviderProps) {
       {children}
     </OrderContext.Provider>
   );
-}
+};
+
+export { useOrder, OrderProvider };

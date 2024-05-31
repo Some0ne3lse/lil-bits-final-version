@@ -4,7 +4,7 @@ type Image = {
   imageSource: string;
 };
 
-export default function MealImage({ imageSource }: Image) {
+const MealImage = ({ imageSource }: Image) => {
   return (
     <Image
       src={imageSource}
@@ -14,4 +14,6 @@ export default function MealImage({ imageSource }: Image) {
       priority
     />
   );
-}
+};
+
+export default MealImage;

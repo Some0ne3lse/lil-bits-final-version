@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { api } from "../api/api";
 import styles from "../page.module.css";
 
-export default function SearchForEmail() {
+const SearchForEmail = () => {
   const [email, setEmail] = useState<string>("");
   const { setMenuItems } = useOrder();
   const [error, setError] = useState<string | null>(null);
@@ -65,4 +65,6 @@ export default function SearchForEmail() {
       </form>
     </div>
   );
-}
+};
+
+export default SearchForEmail;
