@@ -209,7 +209,11 @@ export default function DateAmountEmailForm() {
         onSubmit={handleSubmit((data) => {
           data.count = count;
           if (isWeekDay(data.date)) {
-            onSubmitData(data);
+            if (filterPassedTime(data.date)) {
+              onSubmitData(data);
+            } else {
+              setDateError("You can only pick a time after current time");
+            }
           } else {
             setDateError(
               "You can only pick a date and time from Monday to Friday, 16:00 - 23:00"
