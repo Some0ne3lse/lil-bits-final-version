@@ -1,0 +1,13 @@
+.drinks-container {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 5%;
+  width: 50%;
+  margin: 20px;
+}
+
+.drinks-content {
+  display: flex;
+  gap: 10px;
+}
