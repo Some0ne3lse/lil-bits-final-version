@@ -7,6 +7,7 @@ import { useOrder } from "@/app/context/OrderContext";
 import { Dish } from "@/app/types/types";
 import { useCallback, useEffect, useState } from "react";
 import LinkButton from "@/app/global-components/LinkButton";
+import styles from "../dish.module.css";
 
 const AllMeals = () => {
   const { menuItems, setMenuItems } = useOrder();
@@ -63,17 +64,24 @@ const AllMeals = () => {
     );
   }
   return (
-    <div>
-      <MealImage imageSource={dish.imageSource} />
-      <MealDescription
-        title={dish.name}
-        description={dish.description}
-        price={dish.price}
-      />
-      <button onClick={getRandomOrderFromServer}>Generate new dish</button>
-      <div>You current order is: {dish.name}</div>
-      <LinkButton link="/select-drinks" text="Continue to drink selection" />
-    </div>
+    <main>
+      <div className={styles.dish_container}>
+        <MealImage imageSource={dish.imageSource} />
+        <MealDescription title={dish.name} description={dish.description} />
+        <button
+          className={styles.generate_button}
+          onClick={getRandomOrderFromServer}
+        >
+          Generate new dish
+        </button>
+        <div className={styles.current_order_box}>
+          <div className={styles.current_order_text}>You current order is:</div>
+          <div className={styles.current_order_dish}>{dish.name}</div>
+          <p className={styles.dish_price}>{dish.price} per person</p>
+        </div>
+        <LinkButton link="/select-drinks" text="Continue to drink selection" />
+      </div>
+    </main>
   );
 };
 

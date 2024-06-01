@@ -9,7 +9,7 @@ const LinkButton = ({ link, text }: LinkProps) => {
   return (
     <div>
       <Link href={link}>
-        <button>{text}</button>
+        <button className="link_button">{text}</button>
       </Link>
     </div>
   );

@@ -1,18 +1,22 @@
 import Image from "next/image";
+import styles from "../dish.module.css";
 
-type Image = {
+type ImageType = {
   imageSource: string;
 };
 
-const MealImage = ({ imageSource }: Image) => {
+const MealImage = ({ imageSource }: ImageType) => {
   return (
-    <Image
-      src={imageSource}
-      width={500}
-      height={500}
-      alt="A picture of the current dish"
-      priority
-    />
+    <div className={styles.image_box}>
+      <Image
+        src={imageSource}
+        alt="A picture of the current dish"
+        fill
+        sizes="100vw"
+        className={styles.dish_image}
+        priority
+      />
+    </div>
   );
 };
 

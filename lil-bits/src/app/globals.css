@@ -18,12 +18,7 @@ main {
   justify-content: space-around;
   align-items: center;
   width: 100%;
-}
-.header {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
+  height: 6rem;
 }
 
 .active {
@@ -76,4 +71,17 @@ main {
   ul.react-datepicker__time-list
   li.react-datepicker__time-list-item--disabled {
   display: none;
+}
+
+.link_button {
+  border: none;
+  background-color: #a86e5f;
+  border-radius: 0.5rem;
+  color: white;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem 0 0.5rem;
+}
+
+.link_button:hover {
+  background-color: #a5b381;
 }

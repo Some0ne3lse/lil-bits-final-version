@@ -1,13 +1,19 @@
 "use client";
 
-import { DishDescription } from "@/app/types/types";
+import styles from "../dish.module.css";
 
-const MealDescription = ({ title, description, price }: DishDescription) => {
+type DishDescription = {
+  title: string;
+  description: string;
+};
+
+const MealDescription = ({ title, description }: DishDescription) => {
   return (
     <>
-      <h1>{title}</h1>
-      <p>{description}</p>
-      <p>{price} per person</p>
+      <div className={styles.dish_description_box}>
+        <h1 className={styles.dish_description_text}>{title}</h1>
+        <p className={styles.dish_description_text}>{description}</p>
+      </div>
     </>
   );
 };

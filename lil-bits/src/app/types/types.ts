@@ -38,12 +38,6 @@ export type MealsResponse = {
   meals: Meal[];
 };
 
-export type DishDescription = {
-  title: string;
-  description: string;
-  price: number
-}
-
 export type DrinkApiType = {
   idDrink: string;
   strDrink: string;
