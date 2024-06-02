@@ -72,30 +72,32 @@ const AllDrinks = () => {
   return (
     <div className={styles.drinks_container}>
       <div className={styles.all_drinks_box}>
-        {allDrinksFromServer.drinks.map((item, index) => (
-          <div
-            key={index}
-            className={styles.drinks_content}
-            onClick={() => selectDrink(item)}
-          >
-            <div className={styles.image_and_counter}>
-              <Image
-                src={item.strDrinkThumb}
-                fill
-                sizes="100%"
-                alt={item.strDrink}
-                className={styles.drink_image}
-                priority
-              />
-              {drinksAmountCounter(item.idDrink) > 0 ? (
-                <div className={styles.drink_counter}>
-                  {drinksAmountCounter(item.idDrink)}
-                </div>
-              ) : null}
+        <div className={styles.all_drinks_scroll}>
+          {allDrinksFromServer.drinks.map((item, index) => (
+            <div
+              key={index}
+              className={styles.drinks_content}
+              onClick={() => selectDrink(item)}
+            >
+              <div className={styles.image_and_counter}>
+                <Image
+                  src={item.strDrinkThumb}
+                  fill
+                  sizes="100%"
+                  alt={item.strDrink}
+                  className={styles.drink_image}
+                  priority
+                />
+                {drinksAmountCounter(item.idDrink) > 0 ? (
+                  <div className={styles.drink_counter}>
+                    {drinksAmountCounter(item.idDrink)}
+                  </div>
+                ) : null}
+              </div>
+              <p>{item.strDrink}</p>
             </div>
-            <p>{item.strDrink}</p>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );

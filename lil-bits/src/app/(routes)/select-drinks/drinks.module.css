@@ -29,12 +29,19 @@
   background-color: white;
   width: 80%;
   height: 40vh;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  border-radius: 1rem;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.all_drinks_scroll {
   overflow: scroll;
   overflow-x: hidden;
-  border-radius: 1rem;
-  padding: 1rem 0;
+  height: 90%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 }
 
 .drinks_content {

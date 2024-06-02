@@ -11,8 +11,10 @@ const MealDescription = ({ title, description }: DishDescription) => {
   return (
     <>
       <div className={styles.dish_description_box}>
-        <h1 className={styles.dish_description_text}>{title}</h1>
-        <p className={styles.dish_description_text}>{description}</p>
+        <div className={styles.dish_description_scroll}>
+          <h1 className={styles.dish_description_text}>{title}</h1>
+          <p className={styles.dish_description_text}>{description}</p>
+        </div>
       </div>
     </>
   );

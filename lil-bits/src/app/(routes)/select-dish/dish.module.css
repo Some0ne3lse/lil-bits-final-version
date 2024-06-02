@@ -22,13 +22,19 @@
 
 .dish_description_box {
   width: 80%;
-  height: 300px;
+  height: 35vh;
   background-color: white;
   border-radius: 1rem;
-  display: inline-block;
   margin: 0.5rem;
-  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dish_description_scroll {
+  overflow: scroll;
   overflow-x: hidden;
+  height: 90%;
 }
 
 .dish_price {
