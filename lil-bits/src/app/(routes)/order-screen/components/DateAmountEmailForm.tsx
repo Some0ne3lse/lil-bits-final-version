@@ -74,7 +74,7 @@ const DateAmountEmailForm = () => {
       if (err instanceof Error) {
         setError(
           err.message +
-            " Something went wrong. If you want to create a new order, try doing so."
+            " Something went wrong. If you want to create a new order, try doing so. Otherwise contact costumer support"
         );
       } else {
         setError("Something went wrong. Please contact customer service");
@@ -106,7 +106,7 @@ const DateAmountEmailForm = () => {
       if (err instanceof Error) {
         setError(
           err.message +
-            " Something went wrong. If you previously used this email, try updating instead."
+            " Something went wrong. If you previously used this email, try updating instead. Otherwise contact customer support"
         );
       } else {
         setError("Something went wrong. Please contact customer service");
