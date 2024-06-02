@@ -47,6 +47,9 @@ const putOrder = async (order: OrderType): Promise<OrderType> => {
     throw new Error("Failed to update data");
   }
   const response = await res.json()
+  if (response.success === false){
+    throw new Error(response.error)
+  }
   return response
 }
 
