@@ -77,7 +77,8 @@ main {
   display: none;
 }
 
-.link_button {
+.link_button,
+.return_to_home_button {
   border: none;
   background-color: #a86e5f;
   border-radius: 0.5rem;
@@ -86,6 +87,39 @@ main {
   margin: 0.5rem 0 0.5rem;
 }
 
-.link_button:hover {
-  background-color: #a5b381;
+.link_button:hover,
+.return_to_home_button:hover {
+  background-color: #575e43;
+}
+
+.return_to_home_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* All datepicker classes here because costumising 
+some parts of it requires it to be in globals.css */
+
+.date_picker {
+  border-radius: 1rem;
+  text-align: center;
+  border: 2px solid #a86e5f;
+  width: 50%;
+  display: block;
+  margin: 0.25rem auto;
+  padding: 0.5rem 1rem;
+}
+
+.react-datepicker__input-container {
+  width: 100%;
+}
+
+.react-datepicker-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }

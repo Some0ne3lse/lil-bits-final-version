@@ -7,9 +7,9 @@ type ReturnToHomepageProps = {
 
 const ReturnToHomepage = ({ text, onClick }: ReturnToHomepageProps) => {
   return (
-    <div>
+    <div className="return_to_home_container">
       <Link href="/" onClick={onClick}>
-        <button>{text}</button>
+        <button className="return_to_home_button">{text}</button>
       </Link>
     </div>
   );

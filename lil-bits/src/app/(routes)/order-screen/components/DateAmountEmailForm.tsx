@@ -179,10 +179,20 @@ const DateAmountEmailForm = () => {
   if (!dish || drinks.length === 0) {
     return (
       <>
-        <div>Current items are missing from your order:</div>
-        {!dish && <div>You have not selected a dish yet</div>}
-        {drinks.length === 0 && <div>You have not selected drinks yet</div>}
-        <div>
+        <div className={styles.missing_item_error}>
+          Current items are missing from your order:
+        </div>
+        {!dish && (
+          <div className={styles.missing_dish_error}>
+            You have not selected a dish yet
+          </div>
+        )}
+        {drinks.length === 0 && (
+          <div className={styles.missing_drink_error}>
+            You have not selected drinks yet
+          </div>
+        )}
+        <div className={styles.return_error}>
           Please return to the start page and avoid updating during selection
         </div>
         <ReturnToHomepage onClick={resetForm} text="Start over" />
@@ -207,6 +217,7 @@ const DateAmountEmailForm = () => {
   return (
     <div className={styles.form_container}>
       <form
+        className={styles.entire_form}
         onSubmit={handleSubmit((data) => {
           data.count = count;
           if (isWeekDay(data.date)) {
@@ -228,12 +239,16 @@ const DateAmountEmailForm = () => {
           control={control}
           rules={{ required: { value: true, message: "Date is required" } }}
           render={() => (
-            <div className={styles.date_picker}>
-              <label htmlFor="datePicker">Select your date</label>
+            <div className={styles.date_picker_container}>
+              <label
+                htmlFor="datePicker"
+                className={styles.form_label_date_picker}
+              >
+                Select your date
+              </label>
               <DatePicker
+                className="date_picker"
                 id="datePicker"
-                showIcon
-                toggleCalendarOnIconClick
                 minDate={new Date()}
                 isClearable
                 filterDate={isWeekDay}
@@ -269,7 +284,11 @@ const DateAmountEmailForm = () => {
             />
           )}
         />
+        <label className={styles.form_label_email} htmlFor="email">
+          Enter your email here
+        </label>
         <input
+          className={styles.email_input}
           id="email"
           type="email"
           placeholder={
@@ -285,8 +304,10 @@ const DateAmountEmailForm = () => {
           })}
         />
         {errors.email && <div>{errors.email.message}</div>}
-        <div>Total price: {totalPrice}</div>
-        <button type="submit">{buttonName}</button>
+        <div className={styles.total_price_text}>Total price: {totalPrice}</div>
+        <button className={styles.submit_button} type="submit">
+          {buttonName}
+        </button>
       </form>
     </div>
   );

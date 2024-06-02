@@ -59,9 +59,11 @@ const AllMeals = () => {
 
   if (!dish || error) {
     return (
-      <div>
-        <div>{error}</div>
-        <ReturnToHomepage text="Start over" onClick={resetForm} />
+      <div className={styles.dish_error_container}>
+        <div className={styles.dish_error_box}>
+          <div className={styles.dish_error}>{error}</div>
+          <ReturnToHomepage text="Start over" onClick={resetForm} />
+        </div>
       </div>
     );
   }
