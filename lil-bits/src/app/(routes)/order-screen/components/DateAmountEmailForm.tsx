@@ -202,17 +202,22 @@ const DateAmountEmailForm = () => {
 
   if (error) {
     return (
-      <>
-        <div>{error}</div>
-        {menuItems && emailTaken && (
-          <button onClick={() => updateOrder(menuItems)}>Update Order</button>
-        )}
-        <ReturnToHomepage onClick={resetForm} text="Start over" />
-      </>
+      <div className={styles.order_error_container}>
+        <div className={styles.order_error_box}>
+          <div className={styles.order_error}>{error}</div>
+          {menuItems && emailTaken && (
+            <button
+              className={styles.submit_button}
+              onClick={() => updateOrder(menuItems)}
+            >
+              Update Order
+            </button>
+          )}
+          <ReturnToHomepage onClick={resetForm} text="Start over" />
+        </div>
+      </div>
     );
   }
-
-  // Ask about weekend dates
 
   return (
     <div className={styles.form_container}>
@@ -270,8 +275,10 @@ const DateAmountEmailForm = () => {
             </div>
           )}
         />
-        {dateError && <div>{dateError}</div>}
-        {errors.date && <div>{errors.date.message}</div>}
+        {dateError && <div className={styles.date_error}>{dateError}</div>}
+        {errors.date && (
+          <div className={styles.date_error}>{errors.date.message}</div>
+        )}
         <Controller
           control={control}
           name="count"
@@ -303,7 +310,9 @@ const DateAmountEmailForm = () => {
             },
           })}
         />
-        {errors.email && <div>{errors.email.message}</div>}
+        {errors.email && (
+          <div className={styles.email_error}>{errors.email.message}</div>
+        )}
         <div className={styles.total_price_text}>Total price: {totalPrice}</div>
         <button className={styles.submit_button} type="submit">
           {buttonName}

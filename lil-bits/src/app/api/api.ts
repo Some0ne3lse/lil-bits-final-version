@@ -62,7 +62,7 @@ const getRandomOrder = async (): Promise<MealsResponse> => {
 }
 
 const getAllDrinks = async (): Promise<DrinksResponse> => {
-  const res = await fetch('https://www.hecocktaildb.com/api/json/v1/1/search.php?f=a')
+  const res = await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a')
 
   if (!res.ok) {
     throw new Error('Failed to fetch data')
