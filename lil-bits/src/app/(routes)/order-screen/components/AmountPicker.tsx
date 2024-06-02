@@ -16,7 +16,7 @@ const AmountPicker = ({
 }: AmountPickerType) => {
   return (
     <>
-      <h2>Select amount of people</h2>
+      <label>Select amount of people</label>
       <FontAwesomeIcon icon={faAngleDown} onClick={decreaseAmount} />
       <div>{count.toString()}</div>
       <FontAwesomeIcon icon={faAngleUp} onClick={increaseAmount} />

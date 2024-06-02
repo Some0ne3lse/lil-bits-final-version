@@ -9,6 +9,7 @@ import { useOrder } from "@/app/context/OrderContext";
 import { api } from "@/app/api/api";
 import { OrderType } from "@/app/types/types";
 import ReturnToHomepage from "@/app/global-components/ReturnToHomepage";
+import styles from "../order.module.css";
 
 type FormFieldsType = {
   email: string;
@@ -204,7 +205,7 @@ const DateAmountEmailForm = () => {
   // Ask about weekend dates
 
   return (
-    <>
+    <div className={styles.form_container}>
       <form
         onSubmit={handleSubmit((data) => {
           data.count = count;
@@ -227,27 +228,31 @@ const DateAmountEmailForm = () => {
           control={control}
           rules={{ required: { value: true, message: "Date is required" } }}
           render={() => (
-            <DatePicker
-              showIcon
-              toggleCalendarOnIconClick
-              minDate={new Date()}
-              isClearable
-              filterDate={isWeekDay}
-              filterTime={filterPassedTime}
-              disabledKeyboardNavigation
-              minTime={new Date(0, 0, 0, 16, 0)}
-              maxTime={new Date(0, 0, 0, 23, 0)}
-              showTimeSelect
-              dateFormat="dd/MM/yyyy"
-              timeFormat="HH:mm"
-              required
-              selected={date}
-              placeholderText="Select date"
-              onChange={handleChange}
-              onKeyDown={(e) => {
-                e.preventDefault();
-              }}
-            />
+            <div className={styles.date_picker}>
+              <label htmlFor="datePicker">Select your date</label>
+              <DatePicker
+                id="datePicker"
+                showIcon
+                toggleCalendarOnIconClick
+                minDate={new Date()}
+                isClearable
+                filterDate={isWeekDay}
+                filterTime={filterPassedTime}
+                disabledKeyboardNavigation
+                minTime={new Date(0, 0, 0, 16, 0)}
+                maxTime={new Date(0, 0, 0, 23, 0)}
+                showTimeSelect
+                dateFormat="dd/MM/yyyy"
+                timeFormat="HH:mm"
+                required
+                selected={date}
+                placeholderText="Select date"
+                onChange={handleChange}
+                onKeyDown={(e) => {
+                  e.preventDefault();
+                }}
+              />
+            </div>
           )}
         />
         {dateError && <div>{dateError}</div>}
@@ -283,7 +288,7 @@ const DateAmountEmailForm = () => {
         <div>Total price: {totalPrice}</div>
         <button type="submit">{buttonName}</button>
       </form>
-    </>
+    </div>
   );
 };
 
