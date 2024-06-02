@@ -7,7 +7,6 @@ import AmountPicker from "./AmountPicker";
 import { useRouter } from "next/navigation";
 import { useOrder } from "@/app/context/OrderContext";
 import { api } from "@/app/api/api";
-import { OrderType } from "@/app/types/types";
 import ReturnToHomepage from "@/app/global-components/ReturnToHomepage";
 import styles from "../order.module.css";
 
@@ -33,7 +32,6 @@ const DateAmountEmailForm = () => {
   const [totalPrice, setTotalPrice] = useState<number>(0);
   const [error, setError] = useState<string | null>(null);
   const [dateError, setDateError] = useState<string | null>(null);
-  const [emailTaken, setEmailTaken] = useState<boolean>(false);
 
   useEffect(() => {
     if (menuItems) {
@@ -58,57 +56,8 @@ const DateAmountEmailForm = () => {
     setTotalPrice(calculateTotalPrice());
   }, [count, dish, drinks]);
 
-  const updateOrder = (orderObject: OrderType) => {
-    api
-      .putOrder(orderObject)
-      .then(() => {
-        handleRedirect();
-      })
-      .catch((err) => {
-        setError(
-          err.message + " Please make sure you entered the correct email"
-        );
-        setEmailTaken(false);
-      });
-  };
-
-  const router = useRouter();
-
-  const handleRedirect = () => {
-    router.push("/receipt-screen");
-  };
-
-  const addOrder = (orderObject: OrderType) => {
-    api
-      .postOrder(orderObject)
-      .then(() => {
-        if (!error) {
-          handleRedirect();
-        }
-      })
-      .catch((err) => {
-        setError(
-          err.message +
-            " If you already made an order with this email, you can try updating your order instead"
-        );
-        setMenuItems(orderObject);
-        setEmailTaken(true);
-      });
-  };
-
-  const onSubmitData = (data: FormFieldsType) => {
-    if (!menuItems) {
-      const newMenuItems = {
-        email: data.email,
-        dish: dish,
-        drinks: drinks,
-        count: data.count,
-        date: data.date,
-        price: totalPrice,
-      };
-      setMenuItems(newMenuItems);
-      addOrder(newMenuItems);
-    } else if (menuItems) {
+  const updateOrder = async (data: FormFieldsType) => {
+    try {
       const newMenuItems = {
         ...menuItems,
         email: data.email,
@@ -118,12 +67,50 @@ const DateAmountEmailForm = () => {
         date: data.date,
         price: totalPrice,
       };
+      await api.putOrder(newMenuItems);
       setMenuItems(newMenuItems);
-      updateOrder(newMenuItems);
-    } else {
-      setError(
-        "Some items are missing from your order. Please try again or contact customer support"
-      );
+      handleRedirect();
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(
+          err.message +
+            " Something went wrong. If you want to create a new order, try doing so."
+        );
+      } else {
+        setError("Something went wrong. Please contact customer service");
+      }
+    }
+  };
+
+  const router = useRouter();
+
+  const handleRedirect = () => {
+    router.push("/receipt-screen");
+  };
+
+  const addOrder = async (data: FormFieldsType) => {
+    try {
+      const newMenuItems = {
+        ...menuItems,
+        email: data.email,
+        dish: dish,
+        drinks: drinks,
+        count: count,
+        date: data.date,
+        price: totalPrice,
+      };
+      await api.postOrder(newMenuItems);
+      setMenuItems(newMenuItems);
+      handleRedirect();
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(
+          err.message +
+            " Something went wrong. If you previously used this email, try updating instead."
+        );
+      } else {
+        setError("Something went wrong. Please contact customer service");
+      }
     }
   };
 
@@ -171,10 +158,10 @@ const DateAmountEmailForm = () => {
     setOrderEmail(null);
   };
 
-  let buttonName = "Submit order";
+  let buttonName = "Create new order";
 
   if (menuItems) {
-    buttonName = "Update order";
+    buttonName = "Update existing order";
   }
 
   if (!dish || drinks.length === 0) {
@@ -201,45 +188,9 @@ const DateAmountEmailForm = () => {
     );
   }
 
-  if (error) {
-    return (
-      <div className={styles.order_error_container}>
-        <div className={styles.order_error_box}>
-          <div className={styles.order_error}>{error}</div>
-          {menuItems && emailTaken && (
-            <button
-              className={styles.submit_button}
-              onClick={() => updateOrder(menuItems)}
-            >
-              Update Order
-            </button>
-          )}
-          <ReturnToHomepage onClick={resetForm} text="Start over" />
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className={styles.form_container}>
-      <form
-        className={styles.entire_form}
-        onSubmit={handleSubmit((data) => {
-          data.count = count;
-          if (isWeekDay(data.date)) {
-            if (filterPassedTime(data.date)) {
-              onSubmitData(data);
-            } else {
-              setDateError("You can only pick a time after current time");
-            }
-          } else {
-            setDateError(
-              "You can only pick a date and time from Monday to Friday, 16:00 - 23:00"
-            );
-          }
-        })}
-        noValidate
-      >
+      <form className={styles.entire_form} noValidate>
         <Controller
           name="date"
           control={control}
@@ -315,10 +266,80 @@ const DateAmountEmailForm = () => {
           <div className={styles.email_error}>{errors.email.message}</div>
         )}
         <div className={styles.total_price_text}>Total price: {totalPrice}</div>
-        <button className={styles.submit_button} type="submit">
+        <button
+          className={styles.submit_button}
+          onClick={handleSubmit((data) => {
+            data.count = count;
+            if (isWeekDay(data.date)) {
+              if (filterPassedTime(data.date)) {
+                if (menuItems) {
+                  updateOrder(data);
+                } else if (!menuItems) {
+                  addOrder(data);
+                }
+              } else {
+                setDateError("You can only pick a time after current time");
+              }
+            } else {
+              setDateError(
+                "You can only pick a date and time from Monday to Friday, 16:00 - 23:00"
+              );
+            }
+          })}
+        >
           {buttonName}
         </button>
+        {error && menuItems && (
+          <button
+            className={styles.submit_button}
+            onClick={handleSubmit((data) => {
+              data.count = count;
+              if (isWeekDay(data.date)) {
+                if (filterPassedTime(data.date)) {
+                  addOrder(data);
+                } else {
+                  setDateError("You can only pick a time after current time");
+                }
+              } else {
+                setDateError(
+                  "You can only pick a date and time from Monday to Friday, 16:00 - 23:00"
+                );
+              }
+            })}
+          >
+            Create new order
+          </button>
+        )}
+        {error && !menuItems && (
+          <button
+            className={styles.submit_button}
+            onClick={handleSubmit((data) => {
+              data.count = count;
+              if (isWeekDay(data.date)) {
+                if (filterPassedTime(data.date)) {
+                  updateOrder(data);
+                } else {
+                  setDateError("You can only pick a time after current time");
+                }
+              } else {
+                setDateError(
+                  "You can only pick a date and time from Monday to Friday, 16:00 - 23:00"
+                );
+              }
+            })}
+          >
+            Update existing order
+          </button>
+        )}
       </form>
+      {error && (
+        <div className={styles.order_error_container}>
+          <div className={styles.order_error_box}>
+            <div className={styles.order_error}>{error}</div>
+            <ReturnToHomepage onClick={resetForm} text="Start over" />
+          </div>
+        </div>
+      )}
     </div>
   );
 };
