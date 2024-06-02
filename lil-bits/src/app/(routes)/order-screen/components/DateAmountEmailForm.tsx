@@ -65,7 +65,6 @@ const DateAmountEmailForm = () => {
         handleRedirect();
       })
       .catch((err) => {
-        console.log(err);
         setError(err.message);
         setEmailTaken(false);
       });
