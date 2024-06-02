@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { api } from "@/app/api/api";
-import styles from "../AllDrinks.module.css";
+import styles from "../drinks.module.css";
 import ReturnToHomepage from "@/app/global-components/ReturnToHomepage";
 import Image from "next/image";
 import { useOrder } from "@/app/context/OrderContext";

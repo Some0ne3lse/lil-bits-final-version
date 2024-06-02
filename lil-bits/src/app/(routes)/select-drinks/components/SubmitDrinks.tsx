@@ -1,7 +1,7 @@
 import { useOrder } from "@/app/context/OrderContext";
 import LinkButton from "@/app/global-components/LinkButton";
 import RemoveDrinkButton from "./RemoveDrinkButton";
-import styles from "../AllDrinks.module.css";
+import styles from "../drinks.module.css";
 
 type SubmitDrinkType = {
   drinks: string;

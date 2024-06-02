@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBan } from "@fortawesome/free-solid-svg-icons";
 import { useOrder } from "@/app/context/OrderContext";
-import styles from "../AllDrinks.module.css";
+import styles from "../drinks.module.css";
 
 const RemoveDrinkButton = ({ index }: { index: number }) => {
   const { drinks, setDrinks } = useOrder();
