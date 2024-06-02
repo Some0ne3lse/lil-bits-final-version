@@ -27,7 +27,8 @@
   border-radius: 1rem;
   display: inline-block;
   margin: 0.5rem;
-  overflow: scroll;
+  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .dish_price {

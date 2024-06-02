@@ -32,6 +32,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   overflow: scroll;
+  overflow-x: hidden;
   border-radius: 1rem;
   padding: 1rem 0;
 }
