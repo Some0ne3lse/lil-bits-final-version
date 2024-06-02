@@ -166,25 +166,27 @@ const DateAmountEmailForm = () => {
 
   if (!dish || drinks.length === 0) {
     return (
-      <>
-        <div className={styles.missing_item_error}>
-          Current items are missing from your order:
-        </div>
-        {!dish && (
-          <div className={styles.missing_dish_error}>
-            You have not selected a dish yet
+      <div className={styles.missing_items_container}>
+        <div className={styles.missing_items_box}>
+          <div className={styles.missing_item_error}>
+            Current items are missing from your order:
           </div>
-        )}
-        {drinks.length === 0 && (
-          <div className={styles.missing_drink_error}>
-            You have not selected drinks yet
+          {!dish && (
+            <div className={styles.missing_dish_error}>
+              You have not selected a dish yet
+            </div>
+          )}
+          {drinks.length === 0 && (
+            <div className={styles.missing_drink_error}>
+              You have not selected drinks yet
+            </div>
+          )}
+          <div className={styles.return_error}>
+            Please return to the start page and avoid updating during selection
           </div>
-        )}
-        <div className={styles.return_error}>
-          Please return to the start page and avoid updating during selection
+          <ReturnToHomepage onClick={resetForm} text="Start over" />
         </div>
-        <ReturnToHomepage onClick={resetForm} text="Start over" />
-      </>
+      </div>
     );
   }
 

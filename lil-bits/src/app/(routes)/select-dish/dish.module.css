@@ -5,14 +5,14 @@
   justify-content: center;
   align-items: center;
   padding: 0;
-  margin: 0 0 1rem;
+  margin: 0 0 0.25rem;
 }
 .image_box {
-  width: 80%;
+  width: 95%;
   height: 300px;
   border-radius: 1rem;
   position: relative;
-  margin: 0 0 0.5rem;
+  margin: 0 0 0.125rem;
 }
 
 .dish_image {
@@ -21,11 +21,11 @@
 }
 
 .dish_description_box {
-  width: 80%;
+  width: 95%;
   height: 35vh;
   background-color: white;
   border-radius: 1rem;
-  margin: 0.5rem;
+  margin: 0.25rem 0.125rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -64,8 +64,8 @@
   background-color: #a86e5f;
   border-radius: 0.5rem;
   color: white;
-  padding: 0.5rem 1rem;
-  margin: 0.5rem 0 0.5rem;
+  padding: 2rem 3rem;
+  margin: 0.125rem 0 0.125rem;
 }
 
 .generate_button:hover {
@@ -74,14 +74,14 @@
 
 .current_order_box,
 .dish_error_box {
-  width: 80%;
+  width: 95%;
   background-color: white;
   border-radius: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0.5rem 0 0.5rem;
+  margin: 0.125rem 0 0.125rem;
 }
 
 .dish_error {

@@ -41,6 +41,7 @@ main {
   align-items: center;
   text-align: center;
   background-color: #575e43;
+  color: white;
 }
 
 .info {
@@ -56,7 +57,7 @@ main {
 .email {
   margin: 0.25rem;
   text-decoration: none;
-  color: black;
+  color: white;
 }
 
 .opening_hours {
@@ -81,10 +82,10 @@ main {
 .return_to_home_button {
   border: none;
   background-color: #a86e5f;
-  border-radius: 0.5rem;
+  border-radius: 1rem;
   color: white;
-  padding: 0.5rem 1rem;
-  margin: 0.5rem 0 0.5rem;
+  padding: 2rem 3rem;
+  margin: 0.125rem 0 0.125rem;
 }
 
 .link_button:hover,
@@ -109,7 +110,7 @@ some parts of it requires it to be in globals.css */
   width: 50%;
   display: block;
   margin: 0.25rem auto;
-  padding: 0.5rem 1rem;
+  padding: 2rem 3rem;
 }
 
 .react-datepicker__input-container {
