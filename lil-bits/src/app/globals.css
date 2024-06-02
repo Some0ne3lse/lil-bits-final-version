@@ -11,6 +11,9 @@ body {
 main {
   margin: 0;
   padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .header {
@@ -31,6 +34,7 @@ main {
 }
 
 .footer {
+  margin-top: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;

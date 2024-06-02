@@ -14,12 +14,14 @@ const AllMeals = () => {
   const { dish, setDish } = useOrder();
   const [error, setError] = useState<string | null>();
 
+  const mealsPrice = 4500;
+
   const getRandomOrderFromServer = useCallback(async () => {
     try {
       const fetchRandomOrder = await api.getRandomOrder();
       setDish({
         id: fetchRandomOrder.meals[0].idMeal,
-        price: 3000,
+        price: mealsPrice,
         name: fetchRandomOrder.meals[0].strMeal,
         description: fetchRandomOrder.meals[0].strInstructions,
         imageSource: fetchRandomOrder.meals[0].strMealThumb,

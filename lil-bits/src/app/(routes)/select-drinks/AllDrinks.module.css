@@ -1,13 +1,96 @@
-.drinks-container {
-  display: grid;
+.drinks_container {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 5%;
-  width: 50%;
-  margin: 20px;
+  align-items: center;
+  padding: 0;
+  margin: 0 0 1rem;
 }
 
-.drinks-content {
+.all_drinks_box {
+  background-color: white;
+  width: 80%;
+  height: 40vh;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  overflow: scroll;
+  border-radius: 1rem;
+  padding: 1rem 0;
+}
+
+.drinks_content {
   display: flex;
-  gap: 10px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.image_and_counter {
+  width: 80%;
+  height: 6rem;
+  border-radius: 1rem;
+  position: relative;
+  margin: 0 0 0.5rem;
+}
+
+.drink_image {
+  object-fit: cover;
+  border-radius: 1rem;
+}
+
+.drink_counter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
+  font-weight: 900;
+  text-shadow: black 1px 1px 2px;
+  color: #a86e5f;
+}
+
+.selected_drinks_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.selected_drinks_box {
+  width: 80%;
+  background-color: white;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0 0.5rem;
+  color: #a86e5f;
+}
+
+.drink_and_delete {
+  display: flex;
+  width: 80%;
+  height: 2rem;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.selected_drink_name {
+  width: 50%;
+  text-align: center;
+  font-weight: 800;
+}
+
+.remove_drink_button {
+  color: red;
+  width: 50%;
+}
+
+.drinks_price {
+  font-weight: 700;
+  margin: 0.25rem 0.5rem 0.25rem;
+  color: black;
 }

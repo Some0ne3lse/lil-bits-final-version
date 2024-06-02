@@ -7,7 +7,8 @@ import { useOrder } from "@/app/context/OrderContext";
 import { DrinkApiType, DrinksResponse } from "@/app/types/types";
 
 const AllDrinks = () => {
-  const { setDrinks, menuItems, setMenuItems } = useOrder();
+  const { drinksAmountCounter, setDrinks, menuItems, setMenuItems } =
+    useOrder();
   const [error, setError] = useState<string | null>();
 
   const [allDrinksFromServer, setAllDrinksFromServer] =
@@ -30,6 +31,8 @@ const AllDrinks = () => {
     getAllDrinksFromServer();
   }, [getAllDrinksFromServer]);
 
+  const drinksPrice = 2500;
+
   const selectDrink = (event: DrinkApiType) => {
     setDrinks((drinks) => [
       ...drinks,
@@ -38,7 +41,7 @@ const AllDrinks = () => {
         name: event.strDrink,
         description: event.strInstructions,
         imageSource: event.strDrinkThumb,
-        price: 1000,
+        price: drinksPrice,
         category: event.strCategory,
       },
     ]);
@@ -65,22 +68,33 @@ const AllDrinks = () => {
     );
   }
   return (
-    <div className={styles["drinks-container"]}>
-      {allDrinksFromServer.drinks.map((item, index) => (
-        <div
-          key={index}
-          className={styles["drinks-content"]}
-          onClick={() => selectDrink(item)}
-        >
-          <Image
-            src={item.strDrinkThumb}
-            width={100}
-            height={100}
-            alt={item.strDrink}
-          />
-          <p className={styles["drink-name"]}>{item.strDrink}</p>
-        </div>
-      ))}
+    <div className={styles.drinks_container}>
+      <div className={styles.all_drinks_box}>
+        {allDrinksFromServer.drinks.map((item, index) => (
+          <div
+            key={index}
+            className={styles.drinks_content}
+            onClick={() => selectDrink(item)}
+          >
+            <div className={styles.image_and_counter}>
+              <Image
+                src={item.strDrinkThumb}
+                fill
+                sizes="100%"
+                alt={item.strDrink}
+                className={styles.drink_image}
+                priority
+              />
+              {drinksAmountCounter(item.idDrink) > 0 ? (
+                <div className={styles.drink_counter}>
+                  {drinksAmountCounter(item.idDrink)}
+                </div>
+              ) : null}
+            </div>
+            <p>{item.strDrink}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
