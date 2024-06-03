@@ -4,6 +4,7 @@ import { useOrder } from "@/app/context/OrderContext";
 import { OrderType } from "@/app/types/types";
 import { useCallback, useEffect, useState } from "react";
 import styles from "../receipt.module.css";
+import Image from "next/image";
 
 const Receipt = () => {
   const { menuItems } = useOrder();
@@ -51,32 +52,60 @@ const Receipt = () => {
     return (
       <div className={styles.receipt_container}>
         <div className={styles.receipt_box}>
-          <div className={styles.receipt_text}>
-            <div>
-              <p className={styles.receipt_type}>Date:</p>
-              {formatDate(receipt.date)}
+          <div className={styles.all_text}>
+            <div className={styles.receipt_text}>
+              <div>
+                <p className={styles.receipt_type}>Date:</p>
+                {formatDate(receipt.date)}
+              </div>
+              <div>
+                <p className={styles.receipt_type}>Email:</p>
+                {receipt?.email}
+              </div>
+              <div>
+                <p className={styles.receipt_type}>Selected Dish:</p>
+                {receipt.dish.name}
+              </div>
+              <div>
+                <p className={styles.receipt_type}>Selected Drinks:</p>
+                {receipt.drinks.map((item, index) => (
+                  <div key={index}>{item.name}</div>
+                ))}
+              </div>
+              <div>
+                <p className={styles.receipt_type}>Amount Of Servings</p>{" "}
+                {receipt.count}
+              </div>
             </div>
-            <div>
-              <p className={styles.receipt_type}>Email:</p>
-              {receipt?.email}
-            </div>
-            <div>
-              <p className={styles.receipt_type}>Selected Dish:</p>
-              {receipt.dish.name}
-            </div>
-            <div>
-              <p className={styles.receipt_type}>Selected Drinks:</p>
-              {receipt.drinks.map((item, index) => (
-                <div key={index}>{item.name}</div>
-              ))}
-            </div>
-            <div>
-              <p className={styles.receipt_type}>Amount Of Servings</p>{" "}
-              {receipt.count}
+            <div className={styles.receipt_total_price}>
+              Total: {receipt.price} ISK
             </div>
           </div>
-          <div className={styles.receipt_total_price}>
-            Total: {receipt.price} ISK
+          <div className={styles.receipt_images}>
+            <div className={styles.dish_image_container}>
+              <Image
+                className={styles.dish_image}
+                src={receipt.dish.imageSource}
+                alt={receipt.dish.name}
+                sizes="100%"
+                fill
+                priority
+              />
+            </div>
+            <div className={styles.drink_grid}>
+              {receipt.drinks.map((item, index) => (
+                <div key={index} className={styles.drinks_content}>
+                  <Image
+                    className={styles.receipt_drinks_image}
+                    src={item.imageSource}
+                    alt={item.name}
+                    sizes="100%"
+                    fill
+                    priority
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
