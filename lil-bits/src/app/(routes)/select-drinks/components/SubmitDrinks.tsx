@@ -42,8 +42,8 @@ const SubmitDrinks = () => {
         {drinks && (
           <p className={styles.drinks_price}>Price: {totalDrinksPrice}</p>
         )}
-        <LinkButton link="/order-screen" text="Continue to Order screen" />
       </div>
+      <LinkButton link="/order-screen" text="Continue to Order screen" />
     </div>
   );
 };
