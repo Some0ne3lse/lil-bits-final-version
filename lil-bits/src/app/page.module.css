@@ -98,7 +98,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-bottom: 1rem;
+  padding-bottom: 0.25rem;
 }
 
 .order_text,
@@ -119,7 +119,7 @@
   background-color: #a86e5f;
   border-radius: 0.5rem;
   color: white;
-  padding: 2rem 3rem;
+  padding: 1rem 1.5rem;
 }
 
 .submit_button:hover {
@@ -140,7 +140,7 @@
 .form_input {
   border: #a86e5f solid 1px;
   border-radius: 1rem;
-  padding: 2rem 3rem;
+  padding: 1rem 3rem;
   text-align: center;
   margin: 0.125rem;
 }

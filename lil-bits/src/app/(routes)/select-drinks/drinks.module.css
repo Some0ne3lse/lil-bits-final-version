@@ -156,3 +156,22 @@
     width: 100%;
   }
 }
+
+@media (min-width: 1024px) {
+  .drinks_page {
+    height: 80vh;
+  }
+  .drinks_container {
+    height: 100%;
+    justify-content: flex-start;
+  }
+  .all_drinks_box {
+    height: 80%;
+  }
+  .all_drinks_scroll {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .image_and_counter {
+    height: 10rem;
+  }
+}

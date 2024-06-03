@@ -84,7 +84,7 @@ main {
   background-color: #a86e5f;
   border-radius: 1rem;
   color: white;
-  padding: 2rem 3rem;
+  padding: 1rem 1.5rem;
   margin: 0.125rem 0 0.125rem;
 }
 
@@ -108,10 +108,10 @@ some parts of it requires it to be in globals.css */
   font-size: 16px;
   text-align: center;
   border: 2px solid #a86e5f;
-  width: 25%;
+  width: 125px;
   display: block;
   margin: 0.25rem auto;
-  padding: 2rem 3rem;
+  padding: 1rem 3rem;
 }
 
 .react-datepicker__input-container {
@@ -141,7 +141,7 @@ some parts of it requires it to be in globals.css */
 
   .date_picker {
     margin: 0;
-    width: auto;
+    width: 170px;
   }
 }
 
