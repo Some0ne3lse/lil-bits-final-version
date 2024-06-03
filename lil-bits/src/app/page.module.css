@@ -41,6 +41,8 @@
 
 .embla__viewport {
   overflow: hidden;
+  border-radius: 1rem;
+  text-align: center;
 }
 .embla__container {
   display: flex;
@@ -96,6 +98,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-bottom: 1rem;
 }
 
 .order_text,
@@ -129,9 +132,9 @@
   padding: 1rem;
 }
 
-.the_map {
-  padding-top: 0.25rem;
-  padding-bottom: 1rem;
+.map_div {
+  width: 90%;
+  height: 300px;
 }
 
 .form_input {
@@ -150,15 +153,31 @@
 }
 
 @media (min-width: 640px) {
-  .homepage_buttons {
-    display: flex;
-    justify-content: space-between;
+  .entire_home_page {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto auto auto;
+  }
+
+  .embla__viewport {
+    height: 25rem;
+    border-radius: 1rem;
+  }
+
+  .embla {
+    width: 100%;
+  }
+
+  .carousel_container {
+    grid-column: 1/3;
+    grid-row: 1/2;
     margin: 1rem;
-    gap: 1rem;
   }
 
   .order_container {
-    width: 50%;
+    grid-column: 1/2;
+    grid-row: 2/3;
+    margin: 0.75rem 0.5rem 0.5rem 1rem;
   }
 
   .order_box {
@@ -168,10 +187,73 @@
   }
 
   .form_container {
-    width: 50%;
-    margin: 0;
+    grid-column: 2/3;
+    grid-row: 2/3;
+    margin: 0.75rem 1rem 0.5rem 0.5rem;
   }
   .form {
+    width: 100%;
+  }
+  .map_container {
+    grid-column: 1/3;
+    grid-row: 3/4;
+    margin-top: 0.75rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .entire_home_page {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr 0.4fr;
+  }
+
+  .carousel_container {
+    grid-column: 1/3;
+    grid-row: 1/2;
+    margin: 0 1rem 0 1rem;
+  }
+
+  .embla__viewport {
+    height: 25rem;
+  }
+
+  .order_container {
+    grid-column: 3/4;
+    grid-row: 1/2;
+    display: flex;
+    justify-content: flex-start;
+    margin: 0 1rem 0 0;
+  }
+  .order_box {
+    height: 50%;
+  }
+
+  .form_container {
+    grid-column: 1/2;
+    grid-row: 2/3;
+    margin: 1rem 0.5rem 1rem 1rem;
+  }
+
+  .form {
+    height: 100%;
+  }
+
+  .map_container {
+    grid-column: 2/4;
+    grid-row: 2/3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 1rem 1rem 0.5rem;
+  }
+
+  .map_div {
+    height: 180px;
+  }
+
+  .map_box {
+    height: 100%;
     width: 100%;
   }
 }

@@ -144,3 +144,38 @@ some parts of it requires it to be in globals.css */
     width: auto;
   }
 }
+
+@media (min-width: 1024px) {
+  .active {
+    background-color: #575e43;
+    color: white;
+  }
+
+  .inactive {
+    display: block;
+  }
+
+  .footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding-bottom: 1rem;
+  }
+
+  .address {
+    margin: 1rem 0 0.25rem;
+  }
+
+  .phone {
+    margin: 0.25rem;
+  }
+
+  .opening_hours {
+    margin: 0;
+  }
+
+  .opening_text {
+    margin: 1rem 0 0.5rem;
+  }
+}

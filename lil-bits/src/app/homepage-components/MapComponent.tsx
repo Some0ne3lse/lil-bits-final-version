@@ -46,11 +46,13 @@ const MapComponent = () => {
   }, [lilBitsWebMercator]);
 
   return (
-    <div
-      style={{ height: "300px", width: "90%" }}
-      id="map"
-      className={styles.the_map}
-    />
+    <div className={styles.map_div}>
+      <div
+        style={{ height: "100%", width: "100%" }}
+        id="map"
+        className={styles.the_map}
+      />
+    </div>
   );
 };
 
