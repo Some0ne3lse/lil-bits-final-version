@@ -159,10 +159,10 @@
 
 @media (min-width: 1024px) {
   .drinks_page {
-    height: 80vh;
+    height: fit-content;
   }
   .drinks_container {
-    height: 100%;
+    height: 70vh;
     justify-content: flex-start;
   }
   .all_drinks_box {
@@ -173,5 +173,9 @@
   }
   .image_and_counter {
     height: 10rem;
+  }
+
+  .selected_drinks_container {
+    margin: 0;
   }
 }
