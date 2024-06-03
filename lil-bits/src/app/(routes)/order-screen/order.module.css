@@ -121,3 +121,84 @@
   text-align: center;
   padding: 1rem;
 }
+
+.date_and_amount {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.date_and_error {
+  width: auto;
+}
+
+.email_and_submit {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.email_and_error {
+  display: flex;
+  flex-direction: column;
+}
+
+.price_and_submit {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 640px) {
+  .missing_items_container {
+    padding: 1rem;
+  }
+
+  .missing_items_box {
+    width: 100%;
+  }
+
+  .entire_form {
+    width: 100%;
+    margin: 1rem;
+  }
+
+  .date_and_amount {
+    flex-direction: row;
+    margin: 0 1rem 1rem;
+  }
+
+  .date_and_error {
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .amount_container {
+    width: 45%;
+  }
+
+  .email_and_submit {
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 0 1rem;
+  }
+
+  .price_and_submit {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .email_and_error {
+    width: 55%;
+  }
+}

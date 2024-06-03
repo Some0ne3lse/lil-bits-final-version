@@ -193,104 +193,117 @@ const DateAmountEmailForm = () => {
   return (
     <div className={styles.form_container}>
       <form className={styles.entire_form} noValidate>
-        <Controller
-          name="date"
-          control={control}
-          rules={{ required: { value: true, message: "Date is required" } }}
-          render={() => (
-            <div className={styles.date_picker_container}>
-              <label
-                htmlFor="datePicker"
-                className={styles.form_label_date_picker}
-              >
-                Select your date
-              </label>
-              <DatePicker
-                className="date_picker"
-                id="datePicker"
-                minDate={new Date()}
-                isClearable
-                filterDate={isWeekDay}
-                filterTime={filterPassedTime}
-                disabledKeyboardNavigation
-                minTime={new Date(0, 0, 0, 16, 0)}
-                maxTime={new Date(0, 0, 0, 23, 0)}
-                showTimeSelect
-                dateFormat="dd/MM/yyyy"
-                timeFormat="HH:mm"
-                required
-                selected={date}
-                placeholderText="Select date"
-                onChange={handleChange}
-                onKeyDown={(e) => {
-                  e.preventDefault();
-                }}
-              />
-            </div>
-          )}
-        />
-        {dateError && <div className={styles.date_error}>{dateError}</div>}
-        {errors.date && (
-          <div className={styles.date_error}>{errors.date.message}</div>
-        )}
-        <Controller
-          control={control}
-          name="count"
-          render={() => (
-            <AmountPicker
-              count={count}
-              decreaseAmount={decreaseAmount}
-              increaseAmount={increaseAmount}
-              invalidAmount={invalidAmount}
+        <div className={styles.date_and_amount}>
+          <div className={styles.date_and_error}>
+            <Controller
+              name="date"
+              control={control}
+              rules={{ required: { value: true, message: "Date is required" } }}
+              render={() => (
+                <div className={styles.date_picker_container}>
+                  <label
+                    htmlFor="datePicker"
+                    className={styles.form_label_date_picker}
+                  >
+                    Select your date
+                  </label>
+                  <DatePicker
+                    className="date_picker"
+                    id="datePicker"
+                    minDate={new Date()}
+                    isClearable
+                    filterDate={isWeekDay}
+                    filterTime={filterPassedTime}
+                    disabledKeyboardNavigation
+                    minTime={new Date(0, 0, 0, 16, 0)}
+                    maxTime={new Date(0, 0, 0, 23, 0)}
+                    showTimeSelect
+                    dateFormat="dd/MM/yyyy"
+                    timeFormat="HH:mm"
+                    required
+                    selected={date}
+                    placeholderText="Select date"
+                    onChange={handleChange}
+                    onKeyDown={(e) => {
+                      e.preventDefault();
+                    }}
+                  />
+                </div>
+              )}
             />
-          )}
-        />
-        <label className={styles.form_label_email} htmlFor="email">
-          Enter your email here
-        </label>
-        <input
-          className={styles.email_input}
-          id="email"
-          type="email"
-          placeholder={
-            menuItems?.email ? "Please re-enter email" : "Enter email"
-          }
-          {...register("email", {
-            required: "Email is required",
-            pattern: {
-              value:
-                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-              message: "Invalid email address",
-            },
-          })}
-        />
-        {errors.email && (
-          <div className={styles.email_error}>{errors.email.message}</div>
-        )}
-        <div className={styles.total_price_text}>Total price: {totalPrice}</div>
-        <button
-          className={styles.submit_button}
-          onClick={handleSubmit((data) => {
-            data.count = count;
-            if (isWeekDay(data.date)) {
-              if (filterPassedTime(data.date)) {
-                if (menuItems) {
-                  updateOrder(data);
-                } else if (!menuItems) {
-                  addOrder(data);
-                }
-              } else {
-                setDateError("You can only pick a time after current time");
+            {dateError && <div className={styles.date_error}>{dateError}</div>}
+            {errors.date && (
+              <div className={styles.date_error}>{errors.date.message}</div>
+            )}
+          </div>
+          <Controller
+            control={control}
+            name="count"
+            render={() => (
+              <AmountPicker
+                count={count}
+                decreaseAmount={decreaseAmount}
+                increaseAmount={increaseAmount}
+                invalidAmount={invalidAmount}
+              />
+            )}
+          />
+        </div>
+        <div className={styles.email_and_submit}>
+          <div className={styles.email_and_error}>
+            <label className={styles.form_label_email} htmlFor="email">
+              Enter your email here
+            </label>
+
+            <input
+              className={styles.email_input}
+              id="email"
+              type="email"
+              placeholder={
+                menuItems?.email ? "Please re-enter email" : "Enter email"
               }
-            } else {
-              setDateError(
-                "You can only pick a date and time from Monday to Friday, 16:00 - 23:00"
-              );
-            }
-          })}
-        >
-          {buttonName}
-        </button>
+              {...register("email", {
+                required: "Email is required",
+                pattern: {
+                  value:
+                    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                  message: "Invalid email address",
+                },
+              })}
+            />
+            {errors.email && (
+              <div className={styles.email_error}>{errors.email.message}</div>
+            )}
+          </div>
+          <div className={styles.price_and_submit}>
+            <div className={styles.total_price_text}>
+              Total price: {totalPrice}
+            </div>
+            <button
+              className={styles.submit_button}
+              onClick={handleSubmit((data) => {
+                data.count = count;
+                if (isWeekDay(data.date)) {
+                  if (filterPassedTime(data.date)) {
+                    if (menuItems) {
+                      updateOrder(data);
+                    } else if (!menuItems) {
+                      addOrder(data);
+                    }
+                  } else {
+                    setDateError("You can only pick a time after current time");
+                  }
+                } else {
+                  setDateError(
+                    "You can only pick a date and time from Monday to Friday, 16:00 - 23:00"
+                  );
+                }
+              })}
+            >
+              {buttonName}
+            </button>
+          </div>
+        </div>
         {error && menuItems && (
           <button
             className={styles.submit_button}
