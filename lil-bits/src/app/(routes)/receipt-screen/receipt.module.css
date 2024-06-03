@@ -94,16 +94,21 @@
   .receipt_box,
   .receipt_error_box {
     text-align: start;
+    width: 100%;
+  }
+
+  .receipt_screen {
+    justify-content: space-between;
   }
 
   .receipt_container {
-    margin: 1rem;
+    margin: 0 1rem;
   }
   .receipt_box {
     flex-direction: row;
     justify-content: space-between;
     padding: 1rem;
-    margin: 1rem;
+    margin-bottom: 1rem;
     width: 100%;
   }
 
@@ -144,5 +149,14 @@
     display: block;
     object-fit: cover;
     border-radius: 1rem;
+  }
+}
+
+@media (min-width: 1201px) {
+  .receipt_screen {
+    width: 1201px;
+  }
+  .receipt_error_container {
+    width: 100%;
   }
 }

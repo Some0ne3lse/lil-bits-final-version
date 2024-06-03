@@ -173,9 +173,15 @@
     width: 100%;
   }
 
+  .form_container {
+    height: fit-content;
+  }
+
   .entire_form {
     width: 100%;
     margin: 1rem;
+    height: 100%;
+    gap: 5rem;
   }
 
   .date_and_amount {
@@ -212,5 +218,15 @@
 
   .email_and_error {
     width: 55%;
+  }
+
+  .total_price_text {
+    font-size: 30px;
+  }
+}
+
+@media (min-width: 1201px) {
+  .form_container {
+    width: 1201px;
   }
 }

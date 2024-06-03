@@ -42,6 +42,7 @@ main {
   text-align: center;
   background-color: #575e43;
   color: white;
+  width: 100%;
 }
 
 .info {
@@ -177,5 +178,16 @@ some parts of it requires it to be in globals.css */
 
   .opening_text {
     margin: 1rem 0 0.5rem;
+  }
+}
+
+@media (min-width: 1201px) {
+  main {
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .header {
+    width: 1201px;
+    justify-content: space-between;
   }
 }

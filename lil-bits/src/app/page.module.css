@@ -256,3 +256,9 @@
     width: 100%;
   }
 }
+
+@media (min-width: 1201px) {
+  .entire_home_page {
+    width: 1201px;
+  }
+}

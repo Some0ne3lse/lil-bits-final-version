@@ -7,6 +7,10 @@
   padding: 0;
   margin: 0 0 0.25rem;
 }
+
+.dish_error_container {
+  margin: auto;
+}
 .image_box {
   width: 95%;
   height: 300px;
@@ -142,5 +146,15 @@
   .current_order_box {
     margin-bottom: 1rem;
     width: 100%;
+  }
+}
+
+@media (min-width: 1201px) {
+  .dish_container {
+    width: 1201px;
+    height: 100%;
+  }
+  .image_box {
+    height: 25rem;
   }
 }
