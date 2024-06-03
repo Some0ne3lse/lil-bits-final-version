@@ -169,6 +169,7 @@
 
   .form_container {
     width: 50%;
+    margin: 0;
   }
   .form {
     width: 100%;

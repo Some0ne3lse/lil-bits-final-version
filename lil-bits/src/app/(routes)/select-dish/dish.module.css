@@ -89,3 +89,58 @@
   text-align: center;
   padding: 1rem;
 }
+
+.generated_dish {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.current_order_and_button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .dish_container {
+    flex-direction: row;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .image_box {
+    width: 100%;
+  }
+
+  .dish_image {
+    width: 100%;
+  }
+
+  .generated_dish {
+    width: 70%;
+    margin: 0 1rem 1rem;
+  }
+
+  .dish_description_box {
+    margin: 1rem 0;
+    width: 100%;
+  }
+
+  .generate_button {
+    align-self: flex-start;
+  }
+
+  .current_order_and_button {
+    width: 30%;
+    margin: 0 1rem 1rem 0;
+  }
+
+  .current_order_box {
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+}

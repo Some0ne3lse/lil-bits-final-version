@@ -70,20 +70,29 @@ const AllMeals = () => {
   return (
     <main>
       <div className={styles.dish_container}>
-        <MealImage imageSource={dish.imageSource} />
-        <MealDescription title={dish.name} description={dish.description} />
-        <button
-          className={styles.generate_button}
-          onClick={getRandomOrderFromServer}
-        >
-          Generate new dish
-        </button>
-        <div className={styles.current_order_box}>
-          <div className={styles.current_order_text}>You current order is:</div>
-          <div className={styles.current_order_dish}>{dish.name}</div>
-          <p className={styles.dish_price}>{dish.price} per person</p>
+        <div className={styles.generated_dish}>
+          <MealImage imageSource={dish.imageSource} />
+          <MealDescription title={dish.name} description={dish.description} />
+          <button
+            className={styles.generate_button}
+            onClick={getRandomOrderFromServer}
+          >
+            Generate new dish
+          </button>
         </div>
-        <LinkButton link="/select-drinks" text="Continue to drink selection" />
+        <div className={styles.current_order_and_button}>
+          <div className={styles.current_order_box}>
+            <div className={styles.current_order_text}>
+              You current order is:
+            </div>
+            <div className={styles.current_order_dish}>{dish.name}</div>
+            <p className={styles.dish_price}>{dish.price} per person</p>
+          </div>
+          <LinkButton
+            link="/select-drinks"
+            text="Continue to drink selection"
+          />
+        </div>
       </div>
     </main>
   );
