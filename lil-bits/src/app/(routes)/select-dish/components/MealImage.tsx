@@ -12,7 +12,7 @@ const MealImage = ({ imageSource }: ImageType) => {
         src={imageSource}
         alt="A picture of the current dish"
         fill
-        sizes="100vw"
+        sizes="100%"
         className={styles.dish_image}
         priority
       />

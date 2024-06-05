@@ -51,6 +51,7 @@ const SearchForEmail = () => {
         <input
           id="email"
           type="text"
+          autoComplete="off"
           value={email}
           onChange={handleEmailChange}
           placeholder="Enter your email"

@@ -184,6 +184,11 @@
     gap: 5rem;
   }
 
+  .date_picker_container {
+    height: 100%;
+    justify-content: space-between;
+  }
+
   .date_and_amount {
     flex-direction: row;
     margin: 0 1rem 1rem;
@@ -212,16 +217,23 @@
     width: 45%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    height: 104px;
   }
 
   .email_and_error {
     width: 55%;
+    height: 104px;
+    justify-content: space-between;
   }
 
   .total_price_text {
     font-size: 30px;
+  }
+
+  .submit_button {
+    margin-bottom: 0;
   }
 }
 

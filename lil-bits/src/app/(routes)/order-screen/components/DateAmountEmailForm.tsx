@@ -257,6 +257,7 @@ const DateAmountEmailForm = () => {
 
             <input
               className={styles.email_input}
+              autoComplete="off"
               id="email"
               type="email"
               placeholder={
