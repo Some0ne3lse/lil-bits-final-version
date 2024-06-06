@@ -8,15 +8,19 @@ import { Dish } from "@/app/types/types";
 import { useCallback, useEffect, useState } from "react";
 import LinkButton from "@/app/global-components/LinkButton";
 import styles from "../dish.module.css";
+import Loading from "@/app/loading";
 
 const AllMeals = () => {
   const { menuItems, setMenuItems } = useOrder();
   const { dish, setDish } = useOrder();
   const [error, setError] = useState<string | null>();
+  const [loading, setLoading] = useState<boolean>(true);
+  const [mealLoading, setMealLoading] = useState<boolean>(false);
 
   const mealsPrice = 4500;
 
   const getRandomOrderFromServer = useCallback(async () => {
+    setMealLoading(true);
     try {
       const fetchRandomOrder = await api.getRandomOrder();
       setDish({
@@ -35,6 +39,8 @@ const AllMeals = () => {
         setError("Something went wrong. Please contact customer support");
       }
     }
+    setMealLoading(false);
+    setLoading(false);
   }, [setDish]);
 
   useEffect(() => {
@@ -57,7 +63,9 @@ const AllMeals = () => {
     setMenuItems(null);
   };
 
-  if (!dish || error) {
+  if (loading) {
+    return <Loading />;
+  } else if (!dish || error) {
     return (
       <div className={styles.dish_error_container}>
         <div className={styles.dish_error_box}>
@@ -71,8 +79,18 @@ const AllMeals = () => {
     <main>
       <div className={styles.dish_container}>
         <div className={styles.generated_dish}>
-          <MealImage imageSource={dish.imageSource} />
-          <MealDescription title={dish.name} description={dish.description} />
+          {!mealLoading ? (
+            <div>
+              <MealImage imageSource={dish.imageSource} />
+              <MealDescription
+                title={dish.name}
+                description={dish.description}
+              />
+            </div>
+          ) : (
+            <Loading />
+          )}
+
           <button
             className={styles.generate_button}
             onClick={getRandomOrderFromServer}
