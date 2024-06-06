@@ -5,11 +5,13 @@ import ReturnToHomepage from "@/app/global-components/ReturnToHomepage";
 import Image from "next/image";
 import { useOrder } from "@/app/context/OrderContext";
 import { DrinkApiType, DrinksResponse } from "@/app/types/types";
+import Loading from "@/app/loading";
 
 const AllDrinks = () => {
   const { drinksAmountCounter, setDrinks, menuItems, setMenuItems } =
     useOrder();
   const [error, setError] = useState<string | null>();
+  const [loading, setLoading] = useState<boolean>(true);
 
   const [allDrinksFromServer, setAllDrinksFromServer] =
     useState<DrinksResponse | null>(null);
@@ -25,6 +27,7 @@ const AllDrinks = () => {
         setError("Something went wrong. Please contact customer support");
       }
     }
+    setLoading(false);
   }, [setAllDrinksFromServer]);
 
   useEffect(() => {
@@ -59,7 +62,13 @@ const AllDrinks = () => {
     setMenuItems(null);
   };
 
-  if (!allDrinksFromServer || error) {
+  if (loading) {
+    return (
+      <div className={styles.drinks_container}>
+        <Loading />
+      </div>
+    );
+  } else if (!allDrinksFromServer || error) {
     return (
       <div className={styles.drinks_error_container}>
         <div className={styles.drinks_error_box}>

@@ -5,10 +5,11 @@ const Loading = () => {
     <main>
       <div className="loader">
         <Image
-          src={"/lilBits.png"}
+          src={"/fetching.webp"}
           width={150}
           height={144}
           alt="Lil' Bits logo"
+          className="fetching_image"
           priority
         />
         <p className="loading_text">Loading...</p>

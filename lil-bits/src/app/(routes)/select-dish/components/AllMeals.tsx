@@ -56,6 +56,7 @@ const AllMeals = () => {
         );
         getRandomOrderFromServer();
       }
+      setLoading(false);
     }
   }, [getRandomOrderFromServer, menuItems, setDish]);
 

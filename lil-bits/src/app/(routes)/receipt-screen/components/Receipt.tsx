@@ -64,12 +64,20 @@ const Receipt = () => {
               </div>
               <div>
                 <p className={styles.receipt_type}>Selected Dish:</p>
-                {receipt.dish.name}
+                <span>{receipt.dish.name}</span>{" "}
+                <span className={styles.receipt_price}>
+                  {receipt.dish.price} ISK per person
+                </span>
               </div>
               <div>
                 <p className={styles.receipt_type}>Selected Drinks:</p>
                 {receipt.drinks.map((item, index) => (
-                  <div key={index}>{item.name}</div>
+                  <div key={index}>
+                    <span>{item.name}</span>{" "}
+                    <span className={styles.receipt_price}>
+                      {item.price} ISK
+                    </span>
+                  </div>
                 ))}
               </div>
               <div>
@@ -77,7 +85,7 @@ const Receipt = () => {
                 {receipt.count}
               </div>
             </div>
-            <div className={styles.receipt_total_price}>
+            <div className={styles.receipt_price}>
               Total: {receipt.price} ISK
             </div>
           </div>
