@@ -3,25 +3,15 @@ import Image, { StaticImageData } from "next/image";
 import React, { useCallback, useEffect, useState } from "react";
 import UseEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
-import image1 from "../../../public/carousel/first-carousel-image.webp";
-import image2 from "../../../public/carousel/second-carousel-image.webp";
-import image3 from "../../../public/carousel/third-carousel-image.webp";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 import styles from "../page.module.css";
 
-const carouselImages = [image1, image2, image3];
+type ImageListType = {
+  imageList: StaticImageData[];
+};
 
-const shuffle = (array: StaticImageData[]) =>
-  [...array].sort(() => Math.random() - 0.5);
-
-const TheCarousel = () => {
+const TheCarousel = ({ imageList }: ImageListType) => {
   const [emblaRef, emblaApi] = UseEmblaCarousel({ loop: true }, [Autoplay()]);
-
-  const [imageList, setImageList] = useState(carouselImages);
-  useEffect(() => {
-    const mountArray = shuffle(carouselImages);
-    setImageList(mountArray);
-  }, []);
 
   const scrollPrev = useCallback(() => {
     if (emblaApi) emblaApi.scrollPrev();

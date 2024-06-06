@@ -101,6 +101,17 @@ main {
   align-items: center;
 }
 
+.loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading_text {
+  font-size: 40px;
+}
+
 /* All datepicker classes here because costumising 
 some parts of it requires it to be in globals.css */
 
