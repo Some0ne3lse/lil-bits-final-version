@@ -1,5 +1,6 @@
 * {
   margin: 0;
+  font-size: 20px;
 }
 
 body {
@@ -122,7 +123,7 @@ some parts of it requires it to be in globals.css */
 
 .date_picker {
   border-radius: 1rem;
-  font-size: 16px;
+  font-size: 20px;
   text-align: center;
   border: 2px solid #a86e5f;
   width: 125px;
