@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   padding: 0;
-  margin: 0 0 0.125rem;
+  margin: 0 0 0.7rem;
 }
 .order_container {
   display: flex;
@@ -12,7 +12,7 @@
   justify-content: center;
   align-items: center;
   padding: 0;
-  margin: 0 0 0.25rem;
+  margin: 0 0 0.7rem;
 }
 .error_container,
 .form_container {
@@ -21,7 +21,7 @@
   justify-content: center;
   align-items: center;
   padding: 0;
-  margin: 0.25rem 0;
+  margin: 0.7rem 0;
 }
 
 .map_container {
@@ -30,7 +30,7 @@
   justify-content: center;
   align-items: center;
   padding: 0;
-  margin: 0.25rem 0 2rem;
+  margin: 0.7rem 0 1rem;
 }
 
 .embla {
@@ -97,7 +97,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-bottom: 0.25rem;
 }
 
 .order_text,
