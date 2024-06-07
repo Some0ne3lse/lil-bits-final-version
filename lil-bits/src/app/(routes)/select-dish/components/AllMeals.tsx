@@ -81,13 +81,13 @@ const AllMeals = () => {
       <div className={styles.dish_container}>
         <div className={styles.generated_dish}>
           {!mealLoading ? (
-            <div>
+            <>
               <MealImage imageSource={dish.imageSource} />
               <MealDescription
                 title={dish.name}
                 description={dish.description}
               />
-            </div>
+            </>
           ) : (
             <Loading />
           )}
