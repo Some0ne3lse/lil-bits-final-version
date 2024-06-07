@@ -10,7 +10,7 @@ const SearchForEmail = () => {
   const [email, setEmail] = useState<string>("");
   const { setMenuItems } = useOrder();
   const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [nextPageLoading, setNextPageLoading] = useState<boolean>(false);
   const router = useRouter();
 
   const getOrdersFromServer = useCallback(
@@ -25,7 +25,7 @@ const SearchForEmail = () => {
         setMenuItems(fetchOrders);
         router.push("/select-dish");
       }
-      setLoading(false);
+      setNextPageLoading(false);
     },
     [router, setMenuItems]
   );
@@ -36,13 +36,14 @@ const SearchForEmail = () => {
 
   const handleVerifyClick = (event: React.FormEvent) => {
     event.preventDefault();
+    setNextPageLoading(true);
     const regexp =
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (regexp.test(email)) {
-      setLoading(true);
       getOrdersFromServer(email);
     } else {
       setError("Not a valid email");
+      setNextPageLoading(false);
     }
   };
 
@@ -61,20 +62,21 @@ const SearchForEmail = () => {
           placeholder="Enter your email"
           className={styles.form_input}
         />
-        {loading && <div>Fetching order...</div>}
         {error && (
           <div className={styles.error_container}>
             <div className={styles.error}>{error}</div>
           </div>
         )}
-        {!loading ? (
+        {!nextPageLoading ? (
           <input
             type="submit"
             value="Search"
             className={styles.submit_button}
           />
         ) : (
-          <ReactLoading type="spin" height={"2rem"} width={"2rem"} />
+          <>
+            <div>Currently fetching your order...</div>
+          </>
         )}
       </form>
     </div>

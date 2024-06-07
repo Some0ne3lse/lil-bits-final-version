@@ -98,9 +98,7 @@ const EntireHomePage = () => {
               text="Order"
               setLoading={() => setNextPageLoading(true)}
             />
-          ) : (
-            <ReactLoading type="spin" height={"2rem"} width={"2rem"} />
-          )}
+          ) : null}
         </div>
       </div>
       <SearchForEmail />
