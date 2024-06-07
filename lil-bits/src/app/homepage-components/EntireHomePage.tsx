@@ -18,6 +18,7 @@ import { Map, View } from "ol";
 import TileLayer from "ol/layer/Tile";
 import OSM from "ol/source/OSM";
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 const carouselImages = [image1, image2, image3];
 
@@ -79,7 +80,12 @@ const EntireHomePage = () => {
   }
 
   return (
-    <div className={styles.entire_home_page}>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ ease: "easeInOut", duration: 0.75 }}
+      className={styles.entire_home_page}
+    >
       <TheCarousel imageList={imageList} />
       <div className={styles.order_container}>
         <div className={styles.order_box}>
@@ -89,7 +95,7 @@ const EntireHomePage = () => {
       </div>
       <SearchForEmail />
       <Address />
-    </div>
+    </motion.div>
   );
 };
 

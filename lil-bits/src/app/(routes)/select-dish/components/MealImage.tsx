@@ -1,5 +1,6 @@
 import Image from "next/image";
 import styles from "../dish.module.css";
+import { motion } from "framer-motion";
 
 type ImageType = {
   imageSource: string;
@@ -7,7 +8,12 @@ type ImageType = {
 
 const MealImage = ({ imageSource }: ImageType) => {
   return (
-    <div className={styles.image_box}>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ ease: "easeInOut", duration: 0.75 }}
+      className={styles.image_box}
+    >
       <Image
         src={imageSource}
         alt="A picture of the current dish"
@@ -16,7 +22,7 @@ const MealImage = ({ imageSource }: ImageType) => {
         className={styles.dish_image}
         priority
       />
-    </div>
+    </motion.div>
   );
 };
 

@@ -2,6 +2,7 @@ import { useOrder } from "@/app/context/OrderContext";
 import LinkButton from "@/app/global-components/LinkButton";
 import RemoveDrinkButton from "./RemoveDrinkButton";
 import styles from "../drinks.module.css";
+import { motion } from "framer-motion";
 
 type SubmitDrinkType = {
   drinks: string;
@@ -12,9 +13,14 @@ const SubmitDrinks = () => {
 
   if (drinks.length === 0) {
     return (
-      <div className={styles.selected_drinks_container}>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ ease: "easeInOut", duration: 0.75 }}
+        className={styles.selected_drinks_container}
+      >
         <div className={styles.selected_drinks_box}>No drinks selected</div>
-      </div>
+      </motion.div>
     );
   }
 
@@ -30,7 +36,12 @@ const SubmitDrinks = () => {
   const totalDrinksPrice = drinksPrice.reduce((acc, curr) => acc + curr);
 
   return (
-    <div className={styles.selected_drinks_container}>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ ease: "easeInOut", duration: 0.75 }}
+      className={styles.selected_drinks_container}
+    >
       <div className={styles.selected_drinks_box}>
         <div>Your Order:</div>
         {listToSort.map((drink, index) => (
@@ -44,7 +55,7 @@ const SubmitDrinks = () => {
         )}
       </div>
       <LinkButton link="/order-screen" text="Continue to Order screen" />
-    </div>
+    </motion.div>
   );
 };
 

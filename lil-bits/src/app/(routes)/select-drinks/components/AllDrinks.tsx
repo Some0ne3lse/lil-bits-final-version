@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useOrder } from "@/app/context/OrderContext";
 import { DrinkApiType, DrinksResponse } from "@/app/types/types";
 import Loading from "@/app/loading";
+import { motion } from "framer-motion";
 
 const AllDrinks = () => {
   const { drinksAmountCounter, setDrinks, menuItems, setMenuItems } =
@@ -70,16 +71,26 @@ const AllDrinks = () => {
     );
   } else if (!allDrinksFromServer || error) {
     return (
-      <div className={styles.drinks_error_container}>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ ease: "easeInOut", duration: 0.75 }}
+        className={styles.drinks_error_container}
+      >
         <div className={styles.drinks_error_box}>
           <div className={styles.drinks_error}>{error}</div>
           <ReturnToHomepage text="Start over" onClick={resetForm} />
         </div>
-      </div>
+      </motion.div>
     );
   }
   return (
-    <div className={styles.drinks_container}>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ ease: "easeInOut", duration: 0.75 }}
+      className={styles.drinks_container}
+    >
       <div className={styles.all_drinks_box}>
         <div className={styles.all_drinks_scroll}>
           {allDrinksFromServer.drinks.map((item, index) => (
@@ -108,7 +119,7 @@ const AllDrinks = () => {
           ))}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

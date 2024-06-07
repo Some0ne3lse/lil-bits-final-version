@@ -9,6 +9,8 @@ import { useCallback, useEffect, useState } from "react";
 import LinkButton from "@/app/global-components/LinkButton";
 import styles from "../dish.module.css";
 import Loading from "@/app/loading";
+import { motion } from "framer-motion";
+import MotionComponent from "./MealImage";
 
 const AllMeals = () => {
   const { menuItems, setMenuItems } = useOrder();
@@ -78,16 +80,21 @@ const AllMeals = () => {
   }
   return (
     <main>
-      <div className={styles.dish_container}>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ ease: "easeInOut", duration: 0.75 }}
+        className={styles.dish_container}
+      >
         <div className={styles.generated_dish}>
           {!mealLoading ? (
-            <>
-              <MealImage imageSource={dish.imageSource} />
+            <div>
+              <MotionComponent imageSource={dish.imageSource} />
               <MealDescription
                 title={dish.name}
                 description={dish.description}
               />
-            </>
+            </div>
           ) : (
             <Loading />
           )}
@@ -112,7 +119,7 @@ const AllMeals = () => {
             text="Continue to drink selection"
           />
         </div>
-      </div>
+      </motion.div>
     </main>
   );
 };

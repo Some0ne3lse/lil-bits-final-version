@@ -103,6 +103,7 @@
 
   .receipt_screen {
     justify-content: space-between;
+    gap: 1rem;
   }
 
   .receipt_container {

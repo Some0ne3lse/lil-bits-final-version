@@ -7,6 +7,10 @@ body {
   margin: 0;
   padding: 0;
   background-color: #a5b381;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 main {

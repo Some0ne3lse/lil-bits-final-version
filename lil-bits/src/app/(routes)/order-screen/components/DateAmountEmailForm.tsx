@@ -9,6 +9,7 @@ import { useOrder } from "@/app/context/OrderContext";
 import { api } from "@/app/api/api";
 import ReturnToHomepage from "@/app/global-components/ReturnToHomepage";
 import styles from "../order.module.css";
+import { motion } from "framer-motion";
 
 type FormFieldsType = {
   email: string;
@@ -196,7 +197,12 @@ const DateAmountEmailForm = () => {
   }
 
   return (
-    <div className={styles.form_container}>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ ease: "easeInOut", duration: 0.75 }}
+      className={styles.form_container}
+    >
       <form className={styles.entire_form} noValidate>
         <div className={styles.date_and_amount}>
           <div className={styles.date_and_error}>
@@ -362,7 +368,7 @@ const DateAmountEmailForm = () => {
           </div>
         </div>
       )}
-    </div>
+    </motion.div>
   );
 };
 
