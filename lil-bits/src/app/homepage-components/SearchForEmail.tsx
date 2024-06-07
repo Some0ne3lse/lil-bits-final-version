@@ -4,6 +4,7 @@ import { useOrder } from "../context/OrderContext";
 import { useRouter } from "next/navigation";
 import { api } from "../api/api";
 import styles from "../page.module.css";
+import ReactLoading from "react-loading";
 
 const SearchForEmail = () => {
   const [email, setEmail] = useState<string>("");
@@ -66,7 +67,15 @@ const SearchForEmail = () => {
             <div className={styles.error}>{error}</div>
           </div>
         )}
-        <input type="submit" value="Search" className={styles.submit_button} />
+        {!loading ? (
+          <input
+            type="submit"
+            value="Search"
+            className={styles.submit_button}
+          />
+        ) : (
+          <ReactLoading type="spin" height={"2rem"} width={"2rem"} />
+        )}
       </form>
     </div>
   );

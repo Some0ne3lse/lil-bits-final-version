@@ -10,6 +10,7 @@ import { api } from "@/app/api/api";
 import ReturnToHomepage from "@/app/global-components/ReturnToHomepage";
 import styles from "../order.module.css";
 import { motion } from "framer-motion";
+import ReactLoading from "react-loading";
 
 type FormFieldsType = {
   email: string;
@@ -74,6 +75,7 @@ const DateAmountEmailForm = () => {
       setMenuItems(newMenuItems);
       handleRedirect();
     } catch (err: unknown) {
+      setLoading(false);
       if (err instanceof Error) {
         setError(
           err.message +
@@ -83,7 +85,6 @@ const DateAmountEmailForm = () => {
         setError("Something went wrong. Please contact customer service");
       }
     }
-    setLoading(false);
   };
 
   const router = useRouter();
@@ -108,6 +109,7 @@ const DateAmountEmailForm = () => {
       setMenuItems(newMenuItems);
       handleRedirect();
     } catch (err: unknown) {
+      setLoading(false);
       if (err instanceof Error) {
         setError(
           err.message +
@@ -117,7 +119,6 @@ const DateAmountEmailForm = () => {
         setError("Something went wrong. Please contact customer service");
       }
     }
-    setLoading(false);
   };
 
   const handleChange = (dateChange: Date) => {
@@ -291,32 +292,37 @@ const DateAmountEmailForm = () => {
             <div className={styles.total_price_text}>
               Total price: {totalPrice}
             </div>
-            <button
-              className={styles.submit_button}
-              onClick={handleSubmit((data) => {
-                data.count = count;
-                if (isWeekDay(data.date)) {
-                  if (filterPassedTime(data.date)) {
-                    if (menuItems) {
-                      updateOrder(data);
-                    } else if (!menuItems) {
-                      addOrder(data);
+            {!loading ? (
+              <button
+                className={styles.submit_button}
+                onClick={handleSubmit((data) => {
+                  data.count = count;
+                  if (isWeekDay(data.date)) {
+                    if (filterPassedTime(data.date)) {
+                      if (menuItems) {
+                        updateOrder(data);
+                      } else if (!menuItems) {
+                        addOrder(data);
+                      }
+                    } else {
+                      setDateError(
+                        "You can only pick a time after current time"
+                      );
                     }
                   } else {
-                    setDateError("You can only pick a time after current time");
+                    setDateError(
+                      "You can only pick a date and time from Monday to Friday, 16:00 - 23:00"
+                    );
                   }
-                } else {
-                  setDateError(
-                    "You can only pick a date and time from Monday to Friday, 16:00 - 23:00"
-                  );
-                }
-              })}
-            >
-              {buttonName}
-            </button>
+                })}
+              >
+                {buttonName}
+              </button>
+            ) : (
+              <ReactLoading type="spin" height={"2rem"} width={"2rem"} />
+            )}
           </div>
         </div>
-        {loading && <div>Communicating with server... Please wait</div>}
         {error && menuItems && (
           <button
             className={styles.submit_button}

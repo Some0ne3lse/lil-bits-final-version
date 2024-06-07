@@ -3,12 +3,15 @@ import LinkButton from "@/app/global-components/LinkButton";
 import RemoveDrinkButton from "./RemoveDrinkButton";
 import styles from "../drinks.module.css";
 import { motion } from "framer-motion";
+import ReactLoading from "react-loading";
+import { useState } from "react";
 
 type SubmitDrinkType = {
   drinks: string;
 };
 
 const SubmitDrinks = () => {
+  const [nextPageLoading, setNextPageLoading] = useState<boolean>(false);
   const { drinks } = useOrder();
 
   if (drinks.length === 0) {
@@ -54,7 +57,15 @@ const SubmitDrinks = () => {
           <p className={styles.drinks_price}>Price: {totalDrinksPrice}</p>
         )}
       </div>
-      <LinkButton link="/order-screen" text="Continue to Order screen" />
+      {!nextPageLoading ? (
+        <LinkButton
+          link="/order-screen"
+          text="Continue to Order screen"
+          setLoading={() => setNextPageLoading(true)}
+        />
+      ) : (
+        <ReactLoading type="spin" height={"2rem"} width={"2rem"} />
+      )}
     </motion.div>
   );
 };

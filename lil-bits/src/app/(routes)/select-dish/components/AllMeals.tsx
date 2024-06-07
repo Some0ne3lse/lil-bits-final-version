@@ -11,6 +11,7 @@ import styles from "../dish.module.css";
 import Loading from "@/app/loading";
 import { motion } from "framer-motion";
 import MotionComponent from "./MealImage";
+import ReactLoading from "react-loading";
 
 const AllMeals = () => {
   const { menuItems, setMenuItems } = useOrder();
@@ -18,6 +19,7 @@ const AllMeals = () => {
   const [error, setError] = useState<string | null>();
   const [loading, setLoading] = useState<boolean>(true);
   const [mealLoading, setMealLoading] = useState<boolean>(false);
+  const [nextPageLoading, setNextPageLoading] = useState<boolean>(false);
 
   const mealsPrice = 4500;
 
@@ -114,10 +116,15 @@ const AllMeals = () => {
             <div className={styles.current_order_dish}>{dish.name}</div>
             <p className={styles.dish_price}>{dish.price} per person</p>
           </div>
-          <LinkButton
-            link="/select-drinks"
-            text="Continue to drink selection"
-          />
+          {!nextPageLoading ? (
+            <LinkButton
+              link="/select-drinks"
+              text="Continue to drink selection"
+              setLoading={() => setNextPageLoading(true)}
+            />
+          ) : (
+            <ReactLoading type="spin" height={"2rem"} width={"2rem"} />
+          )}
         </div>
       </motion.div>
     </main>

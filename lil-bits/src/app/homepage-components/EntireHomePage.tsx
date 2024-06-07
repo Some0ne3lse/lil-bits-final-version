@@ -19,6 +19,7 @@ import TileLayer from "ol/layer/Tile";
 import OSM from "ol/source/OSM";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import ReactLoading from "react-loading";
 
 const carouselImages = [image1, image2, image3];
 
@@ -30,6 +31,7 @@ const EntireHomePage = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [imageLoading, setImageLoading] = useState<boolean>(true);
   const [mapLoading, setMapLoading] = useState<boolean>(true);
+  const [nextPageLoading, setNextPageLoading] = useState<boolean>(false);
 
   const lilBitsLonLat = [-118.43986782975233, 34.23507972862415];
   const lilBitsWebMercator = fromLonLat(lilBitsLonLat);
@@ -90,7 +92,15 @@ const EntireHomePage = () => {
       <div className={styles.order_container}>
         <div className={styles.order_box}>
           <p className={styles.order_text}>Go to our order screen!</p>
-          <LinkButton link="/select-dish" text="Order" />
+          {!nextPageLoading ? (
+            <LinkButton
+              link="/select-dish"
+              text="Order"
+              setLoading={() => setNextPageLoading(true)}
+            />
+          ) : (
+            <ReactLoading type="spin" height={"2rem"} width={"2rem"} />
+          )}
         </div>
       </div>
       <SearchForEmail />
