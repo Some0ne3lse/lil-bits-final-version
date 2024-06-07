@@ -12,7 +12,7 @@
   justify-content: center;
   align-items: center;
   padding: 0;
-  margin: 0 0 0.7rem;
+  margin: 0 0.5rem 0.7rem;
 }
 .error_container,
 .form_container {
@@ -21,7 +21,7 @@
   justify-content: center;
   align-items: center;
   padding: 0;
-  margin: 0.7rem 0;
+  margin: 0.7rem 0.5rem;
 }
 
 .map_container {
@@ -30,7 +30,7 @@
   justify-content: center;
   align-items: center;
   padding: 0;
-  margin: 0.7rem 0 1rem;
+  margin: 0.7rem 0.5rem 1rem;
 }
 
 .embla {
@@ -56,6 +56,7 @@
 .carousel_images {
   object-fit: cover;
   border-radius: 1rem;
+  display: block;
 }
 
 .carousel_button_left,
@@ -90,7 +91,7 @@
 .order_box,
 .form,
 .map_box {
-  width: 95%;
+  width: 100%;
   background-color: white;
   border-radius: 1rem;
   display: flex;
@@ -138,7 +139,7 @@
 .form_input {
   border: #a86e5f solid 1px;
   border-radius: 1rem;
-  padding: 1rem 3rem;
+  padding: 1rem 1rem;
   text-align: center;
   margin: 0.125rem;
 }
@@ -175,7 +176,7 @@
   .order_container {
     grid-column: 1/2;
     grid-row: 2/3;
-    margin: 0.75rem 0.5rem 0.5rem 1rem;
+    margin: 0 0.5rem 0.5rem 1rem;
   }
 
   .order_box {
@@ -187,7 +188,7 @@
   .form_container {
     grid-column: 2/3;
     grid-row: 2/3;
-    margin: 0.75rem 1rem 0.5rem 0.5rem;
+    margin: 0 1rem 0.5rem 0.5rem;
   }
   .form {
     width: 100%;
@@ -195,7 +196,7 @@
   .map_container {
     grid-column: 1/3;
     grid-row: 3/4;
-    margin-top: 0.75rem;
+    margin-top: 0.5rem 1rem 1rem 1rem;
   }
 }
 
