@@ -243,6 +243,10 @@
     margin: 0;
     height: 67px;
   }
+
+  .form_label_amount {
+    margin-top: 0;
+  }
 }
 
 @media (min-width: 1201px) {
