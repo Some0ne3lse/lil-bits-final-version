@@ -5,7 +5,8 @@
   justify-content: center;
   align-items: center;
   padding: 0;
-  margin: 0 0 0.125rem;
+  margin: 0 0 0.7rem;
+  height: 100%;
 }
 
 .receipt_screen {
@@ -74,6 +75,9 @@
     margin: 1rem;
   }
 
+  .receipt_error_box {
+    margin-top: 0;
+  }
   .receipt_container {
     width: 70%;
     margin: 0 1rem 0 0;
@@ -81,7 +85,7 @@
   }
 
   .receipt_box {
-    margin: 0.125rem;
+    margin-top: 0;
     width: 100%;
   }
 

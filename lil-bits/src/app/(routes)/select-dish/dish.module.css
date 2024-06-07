@@ -5,18 +5,18 @@
   justify-content: center;
   align-items: center;
   padding: 0;
-  margin: 0 0 0.25rem;
+  margin: 0 0.25rem;
 }
 
 .dish_error_container {
   margin: auto;
 }
 .image_box {
-  width: 95%;
+  width: 100%;
   height: 300px;
   border-radius: 1rem;
   position: relative;
-  margin: 0 0 0.125rem;
+  margin: 0 0 0.7rem;
   position: relative;
 }
 
@@ -26,11 +26,11 @@
 }
 
 .dish_description_box {
-  width: 95%;
+  width: 100%;
   height: 35vh;
   background-color: white;
   border-radius: 1rem;
-  margin: 0.25rem 0.125rem;
+  margin: 0 0 0.7rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -82,7 +82,7 @@
   border-radius: 0.5rem;
   color: white;
   padding: 1rem 1.5rem;
-  margin: 0.125rem 0 0.125rem;
+  margin: 0 0 0.7rem;
 }
 
 .generate_button:hover {
@@ -91,14 +91,14 @@
 
 .current_order_box,
 .dish_error_box {
-  width: 95%;
+  width: 100%;
   background-color: white;
   border-radius: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0.125rem 0 0.125rem;
+  margin: 0 0 0.7rem;
 }
 
 .dish_error {
@@ -127,10 +127,12 @@
     flex-direction: row;
     align-items: flex-start;
     width: 100%;
+    margin: 0;
   }
 
   .image_box {
     width: 100%;
+    margin-bottom: 1rem;
   }
 
   .dish_image {
@@ -143,7 +145,7 @@
   }
 
   .dish_description_box {
-    margin: 1rem 0;
+    margin: 0 0 1rem;
     width: 100%;
   }
 

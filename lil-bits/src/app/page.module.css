@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   padding: 0;
-  margin: 0 0 0.7rem;
+  margin: 0 0.25rem 0.7rem;
 }
 .order_container {
   display: flex;
@@ -12,7 +12,7 @@
   justify-content: center;
   align-items: center;
   padding: 0;
-  margin: 0 0.5rem 0.7rem;
+  margin: 0 0.25rem 0.7rem;
 }
 .error_container,
 .form_container {
@@ -21,7 +21,7 @@
   justify-content: center;
   align-items: center;
   padding: 0;
-  margin: 0.7rem 0.5rem;
+  margin: 0.7rem 0.25rem;
 }
 
 .map_container {
@@ -30,12 +30,12 @@
   justify-content: center;
   align-items: center;
   padding: 0;
-  margin: 0.7rem 0.5rem 1rem;
+  margin: 0.7rem 0.25rem 1rem;
 }
 
 .embla {
   position: relative;
-  width: 95%;
+  width: 100%;
   height: auto;
 }
 
@@ -98,6 +98,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.map_box {
+  padding-bottom: 1rem;
 }
 
 .order_text,
@@ -182,7 +186,6 @@
   .order_box {
     width: 100%;
     height: 100%;
-    gap: 2rem;
   }
 
   .form_container {
