@@ -59,7 +59,8 @@
   margin: 0.25rem 0.5rem 0.25rem;
 }
 
-.current_order_dish {
+.current_order_dish,
+.current_order_text {
   text-align: center;
 }
 
