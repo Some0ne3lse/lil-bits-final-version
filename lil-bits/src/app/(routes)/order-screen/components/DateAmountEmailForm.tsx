@@ -32,6 +32,7 @@ const DateAmountEmailForm = () => {
   const [totalPrice, setTotalPrice] = useState<number>(0);
   const [error, setError] = useState<string | null>(null);
   const [dateError, setDateError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     if (menuItems) {
@@ -57,6 +58,7 @@ const DateAmountEmailForm = () => {
   }, [count, dish, drinks]);
 
   const updateOrder = async (data: FormFieldsType) => {
+    setLoading(true);
     try {
       const newMenuItems = {
         ...menuItems,
@@ -80,6 +82,7 @@ const DateAmountEmailForm = () => {
         setError("Something went wrong. Please contact customer service");
       }
     }
+    setLoading(false);
   };
 
   const router = useRouter();
@@ -89,6 +92,7 @@ const DateAmountEmailForm = () => {
   };
 
   const addOrder = async (data: FormFieldsType) => {
+    setLoading(true);
     try {
       const newMenuItems = {
         ...menuItems,
@@ -112,6 +116,7 @@ const DateAmountEmailForm = () => {
         setError("Something went wrong. Please contact customer service");
       }
     }
+    setLoading(false);
   };
 
   const handleChange = (dateChange: Date) => {
@@ -305,6 +310,7 @@ const DateAmountEmailForm = () => {
             </button>
           </div>
         </div>
+        {loading && <div>Communicating with server... Please wait</div>}
         {error && menuItems && (
           <button
             className={styles.submit_button}

@@ -162,7 +162,9 @@
     width: auto;
     display: flex;
     align-items: center;
-    justify-content: center;
+    width: 55%;
+    height: 130px;
+    justify-content: space-between;
   }
   .email_input {
     margin: 0;
@@ -219,13 +221,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    height: 104px;
-  }
-
-  .email_and_error {
-    width: 55%;
-    height: 104px;
-    justify-content: space-between;
+    height: 130px;
   }
 
   .total_price_text {
@@ -233,7 +229,8 @@
   }
 
   .submit_button {
-    margin-bottom: 0;
+    margin: 0;
+    height: 67px;
   }
 }
 
