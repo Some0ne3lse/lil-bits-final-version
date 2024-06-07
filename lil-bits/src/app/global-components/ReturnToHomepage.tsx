@@ -9,7 +9,9 @@ const ReturnToHomepage = ({ text, onClick }: ReturnToHomepageProps) => {
   return (
     <div className="return_to_home_container">
       <Link href="/" onClick={onClick}>
-        <button className="return_to_home_button">{text}</button>
+        <button className="return_to_home_button" style={{ cursor: "pointer" }}>
+          {text}
+        </button>
       </Link>
     </div>
   );

@@ -72,6 +72,7 @@ const SearchForEmail = () => {
             type="submit"
             value="Search"
             className={styles.submit_button}
+            style={{ cursor: "pointer" }}
           />
         ) : (
           <ReactLoading

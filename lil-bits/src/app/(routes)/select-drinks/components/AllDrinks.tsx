@@ -106,6 +106,7 @@ const AllDrinks = () => {
                   sizes="100%"
                   alt={item.strDrink}
                   className={styles.drink_image}
+                  style={{ cursor: "pointer" }}
                   priority
                 />
                 {drinksAmountCounter(item.idDrink) > 0 ? (

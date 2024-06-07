@@ -11,7 +11,11 @@ const LinkButton = ({ link, text, setLoading }: LinkProps) => {
   return (
     <div>
       <Link href={link}>
-        <button className="link_button" onClick={setLoading}>
+        <button
+          className="link_button"
+          onClick={setLoading}
+          style={{ cursor: "pointer" }}
+        >
           {text}
         </button>
       </Link>

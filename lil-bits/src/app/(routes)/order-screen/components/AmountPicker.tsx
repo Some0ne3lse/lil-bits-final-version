@@ -24,12 +24,14 @@ const AmountPicker = ({
         <FontAwesomeIcon
           icon={faAngleDown}
           onClick={decreaseAmount}
+          style={{ cursor: "pointer" }}
           className={styles.amount_icon}
         />
         <div className={styles.amount_number}>{count.toString()}</div>
         <FontAwesomeIcon
           icon={faAngleUp}
           onClick={increaseAmount}
+          style={{ cursor: "pointer" }}
           className={styles.amount_icon}
         />
       </div>

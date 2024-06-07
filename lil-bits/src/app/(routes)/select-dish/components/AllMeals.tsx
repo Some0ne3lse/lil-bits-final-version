@@ -81,58 +81,52 @@ const AllMeals = () => {
     );
   }
   return (
-    <main>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ ease: "easeInOut", duration: 0.75 }}
-        className={styles.dish_container}
-      >
-        <div className={styles.generated_dish}>
-          {!mealLoading ? (
-            <div>
-              <MotionComponent imageSource={dish.imageSource} />
-              <MealDescription
-                title={dish.name}
-                description={dish.description}
-              />
-            </div>
-          ) : (
-            <Loading />
-          )}
-
-          <button
-            className={styles.generate_button}
-            onClick={getRandomOrderFromServer}
-          >
-            Generate new dish
-          </button>
-        </div>
-        <div className={styles.current_order_and_button}>
-          <div className={styles.current_order_box}>
-            <div className={styles.current_order_text}>
-              You current order is:
-            </div>
-            <div className={styles.current_order_dish}>{dish.name}</div>
-            <p className={styles.dish_price}>{dish.price} per person</p>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ ease: "easeInOut", duration: 0.75 }}
+      className={styles.dish_container}
+    >
+      <div className={styles.generated_dish}>
+        {!mealLoading ? (
+          <div>
+            <MotionComponent imageSource={dish.imageSource} />
+            <MealDescription title={dish.name} description={dish.description} />
           </div>
-          {!nextPageLoading ? (
-            <LinkButton
-              link="/select-drinks"
-              text="Continue to drink selection"
-              setLoading={() => setNextPageLoading(true)}
-            />
-          ) : (
-            <ReactLoading
-              type="spin"
-              height={"2rem"}
-              width={"2rem"}
-              color="#a86e5f"
-            />
-          )}
+        ) : (
+          <Loading />
+        )}
+
+        <button
+          className={styles.generate_button}
+          onClick={getRandomOrderFromServer}
+          style={{ cursor: "pointer" }}
+        >
+          Generate new dish
+        </button>
+      </div>
+      <div className={styles.current_order_and_button}>
+        <div className={styles.current_order_box}>
+          <div className={styles.current_order_text}>You current order is:</div>
+          <div className={styles.current_order_dish}>{dish.name}</div>
+          <p className={styles.dish_price}>{dish.price} per person</p>
         </div>
-      </motion.div>
-    </main>
+        {!nextPageLoading ? (
+          <LinkButton
+            link="/select-drinks"
+            text="Continue to drink selection"
+            setLoading={() => setNextPageLoading(true)}
+          />
+        ) : (
+          <ReactLoading
+            type="spin"
+            height={"2rem"}
+            width={"2rem"}
+            color="#a86e5f"
+          />
+        )}
+      </div>
+    </motion.div>
   );
 };
 

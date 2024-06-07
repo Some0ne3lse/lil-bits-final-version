@@ -295,6 +295,7 @@ const DateAmountEmailForm = () => {
             {!loading ? (
               <button
                 className={styles.submit_button}
+                style={{ cursor: "pointer" }}
                 onClick={handleSubmit((data) => {
                   data.count = count;
                   if (isWeekDay(data.date)) {
@@ -331,6 +332,7 @@ const DateAmountEmailForm = () => {
         {error && menuItems && (
           <button
             className={styles.submit_button}
+            style={{ cursor: "pointer" }}
             onClick={handleSubmit((data) => {
               data.count = count;
               if (isWeekDay(data.date)) {
@@ -353,6 +355,7 @@ const DateAmountEmailForm = () => {
           !menuItems &&
           (!loading ? (
             <button
+              style={{ cursor: "pointer" }}
               className={styles.submit_button}
               onClick={handleSubmit((data) => {
                 data.count = count;
