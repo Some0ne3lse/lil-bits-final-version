@@ -319,7 +319,12 @@ const DateAmountEmailForm = () => {
                 {buttonName}
               </button>
             ) : (
-              <ReactLoading type="spin" height={"2rem"} width={"2rem"} />
+              <ReactLoading
+                type="spin"
+                height={"2rem"}
+                width={"2rem"}
+                color="#a86e5f"
+              />
             )}
           </div>
         </div>
@@ -344,27 +349,36 @@ const DateAmountEmailForm = () => {
             Create new order
           </button>
         )}
-        {error && !menuItems && (
-          <button
-            className={styles.submit_button}
-            onClick={handleSubmit((data) => {
-              data.count = count;
-              if (isWeekDay(data.date)) {
-                if (filterPassedTime(data.date)) {
-                  updateOrder(data);
+        {error &&
+          !menuItems &&
+          (!loading ? (
+            <button
+              className={styles.submit_button}
+              onClick={handleSubmit((data) => {
+                data.count = count;
+                if (isWeekDay(data.date)) {
+                  if (filterPassedTime(data.date)) {
+                    updateOrder(data);
+                  } else {
+                    setDateError("You can only pick a time after current time");
+                  }
                 } else {
-                  setDateError("You can only pick a time after current time");
+                  setDateError(
+                    "You can only pick a date and time from Monday to Friday, 16:00 - 23:00"
+                  );
                 }
-              } else {
-                setDateError(
-                  "You can only pick a date and time from Monday to Friday, 16:00 - 23:00"
-                );
-              }
-            })}
-          >
-            Update existing order
-          </button>
-        )}
+              })}
+            >
+              Update existing order
+            </button>
+          ) : (
+            <ReactLoading
+              type="spin"
+              height={"2rem"}
+              width={"2rem"}
+              color="#a86e5f"
+            />
+          ))}
       </form>
       {error && (
         <div className={styles.order_error_container}>

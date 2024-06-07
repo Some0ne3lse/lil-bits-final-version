@@ -74,9 +74,12 @@ const SearchForEmail = () => {
             className={styles.submit_button}
           />
         ) : (
-          <>
-            <div>Currently fetching your order...</div>
-          </>
+          <ReactLoading
+            type="spin"
+            height={"2rem"}
+            width={"2rem"}
+            color="#a86e5f"
+          />
         )}
       </form>
     </div>

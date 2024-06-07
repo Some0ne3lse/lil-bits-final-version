@@ -123,7 +123,12 @@ const AllMeals = () => {
               setLoading={() => setNextPageLoading(true)}
             />
           ) : (
-            <ReactLoading type="spin" height={"2rem"} width={"2rem"} />
+            <ReactLoading
+              type="spin"
+              height={"2rem"}
+              width={"2rem"}
+              color="#a86e5f"
+            />
           )}
         </div>
       </motion.div>

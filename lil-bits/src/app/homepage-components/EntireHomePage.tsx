@@ -21,8 +21,10 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import ReactLoading from "react-loading";
 
+// Takes the images and puts them in an array
 const carouselImages = [image1, image2, image3];
 
+// Shuffle function for carouselImages so images are random
 const shuffle = (array: StaticImageData[]) =>
   [...array].sort(() => Math.random() - 0.5);
 
@@ -33,15 +35,18 @@ const EntireHomePage = () => {
   const [mapLoading, setMapLoading] = useState<boolean>(true);
   const [nextPageLoading, setNextPageLoading] = useState<boolean>(false);
 
+  // Takes coordinates and makes them useable for map
   const lilBitsLonLat = [-118.43986782975233, 34.23507972862415];
   const lilBitsWebMercator = fromLonLat(lilBitsLonLat);
 
+  // Initial loading for the map
   useEffect(() => {
     const osmLayer = new TileLayer({
       preload: Infinity,
       source: new OSM(),
     });
 
+    // This layer is for creating marker that shows location gotten from coordinates
     const vectorLayer = new VectorLayer({
       source: new VectorSource({
         features: [
@@ -98,7 +103,14 @@ const EntireHomePage = () => {
               text="Order"
               setLoading={() => setNextPageLoading(true)}
             />
-          ) : null}
+          ) : (
+            <ReactLoading
+              type="spin"
+              height={"2rem"}
+              width={"2rem"}
+              color="#a86e5f"
+            />
+          )}
         </div>
       </div>
       <SearchForEmail />
