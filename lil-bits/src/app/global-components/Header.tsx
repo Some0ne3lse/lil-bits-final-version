@@ -9,7 +9,7 @@ const Header = () => {
     return path === pathName;
   };
   return (
-    <div className="header">
+    <header className="header">
       <Image
         src={"/lilBits.png"}
         width={150}
@@ -31,7 +31,7 @@ const Header = () => {
       >
         Your Receipt
       </h2>
-    </div>
+    </header>
   );
 };
 

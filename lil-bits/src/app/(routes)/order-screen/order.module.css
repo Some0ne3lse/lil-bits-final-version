@@ -98,11 +98,10 @@
   border-radius: 1rem;
   text-align: center;
   border: 2px solid #a86e5f;
-  width: 125px;
-
+  width: 249px;
   display: block;
   margin: 0.125rem auto;
-  padding: 1rem 3rem;
+  padding: 1rem 0;
 }
 
 .submit_button {
@@ -180,7 +179,7 @@
   }
   .email_input {
     margin: 0;
-    width: 170px;
+    width: 294px;
   }
 
   .missing_items_box {
