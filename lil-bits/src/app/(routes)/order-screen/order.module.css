@@ -113,6 +113,10 @@
   margin: 0;
 }
 
+.submit_button:hover {
+  background-color: #575e43;
+}
+
 .order_error_box,
 .missing_items_box {
   width: 95%;

@@ -113,20 +113,17 @@
 }
 
 .submit_button {
-  margin-top: 0.25rem;
-  margin-bottom: 0.25rem;
-}
-
-.submit_button {
   border: none;
   background-color: #a86e5f;
   border-radius: 0.5rem;
   color: white;
   padding: 1rem 1.5rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
 }
 
 .submit_button:hover {
-  background-color: #a5b381;
+  background-color: #575e43;
 }
 
 .error {
