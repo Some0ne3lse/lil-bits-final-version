@@ -151,6 +151,11 @@ some parts of it requires it to be in globals.css */
   width: 100%;
 }
 
+.react-datepicker * {
+  font-size: 16px !important;
+  margin: 0 !important;
+}
+
 .react-datepicker-wrapper {
   display: flex;
   flex-direction: column;

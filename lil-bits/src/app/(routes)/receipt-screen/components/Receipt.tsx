@@ -65,9 +65,9 @@ const Receipt = () => {
               <div>
                 <p className={styles.receipt_type}>Selected Dish:</p>
                 <span>{receipt.dish.name}</span>{" "}
-                <span className={styles.receipt_price}>
+                <div className={styles.receipt_price}>
                   {receipt.dish.price} ISK per person
-                </span>
+                </div>
               </div>
               <div>
                 <p className={styles.receipt_type}>Selected Drinks:</p>
