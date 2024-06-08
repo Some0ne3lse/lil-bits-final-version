@@ -9,6 +9,10 @@ import {
 } from "react";
 import { Dish, Drink, OrderType } from "../types/types";
 
+// This is the context for the entire site. It is needed because every part of the menu is created with a setState
+// If the user starts by finding their menu, it gets saved to menuItems, which is then used in every other page
+// If the user does not find a previous order, menuItems is null until the end, where drinks, dish, etc gets combined into the menuItems
+
 type OrderProviderProps = {
   children: ReactNode;
 };
@@ -29,8 +33,9 @@ type OrderContextType = {
   drinksAmountCounter: (id: string) => number;
 };
 
-// I used chatGPT for the drinksAmountCounter in OrderContextType and OrderContext.
+// I used chatGPT for the drinksAmountCounter type in OrderContextType and OrderContext.
 
+// At first we create the context with initial values
 const OrderContext = createContext<OrderContextType>({
   menuItems: null,
   setMenuItems: () => {},
@@ -47,10 +52,14 @@ const OrderContext = createContext<OrderContextType>({
   drinksAmountCounter: () => 0,
 });
 
+// useOrder is the function we extract to every page that use to actually use the context
 const useOrder = () => {
   return useContext(OrderContext);
 };
 
+// Here is the provider. This is where all the data is stored
+// Different states are saved in setState. This is all the data from the different sites
+// It starts out with null or 1 as in the orderAmount
 const OrderProvider = ({ children }: OrderProviderProps) => {
   const [menuItems, setMenuItems] = useState<OrderType | null>(null);
   const [dish, setDish] = useState<Dish | null>(null);

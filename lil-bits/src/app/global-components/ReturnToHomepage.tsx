@@ -5,6 +5,9 @@ type ReturnToHomepageProps = {
   onClick: () => void;
 };
 
+// This button is to return to homepage.
+// onClick function is there to reset the different setStates in the project
+
 const ReturnToHomepage = ({ text, onClick }: ReturnToHomepageProps) => {
   return (
     <div className="return_to_home_container">
