@@ -17,6 +17,9 @@ const RootLayout = ({
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
+  // OrderProvider here since I want to use it in entire app.
+  // I used chatGPT here since I didn't know what layout.tsx was before then
+  // Now I do, and I put header and footer here by myself
   return (
     <html lang="en">
       <OrderProvider>

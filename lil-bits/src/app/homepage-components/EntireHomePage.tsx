@@ -36,11 +36,14 @@ const EntireHomePage = () => {
   const [nextPageLoading, setNextPageLoading] = useState<boolean>(false);
 
   // Takes coordinates and makes them useable for map
+  // Used chatGPT to enter correct coordinates here
   const lilBitsLonLat = [-118.43986782975233, 34.23507972862415];
   const lilBitsWebMercator = fromLonLat(lilBitsLonLat);
 
   // Initial loading for the map
   useEffect(() => {
+    // As I understand, this layer is the visual representation of the map.
+    // Might be wrong, followed a code pen online
     const osmLayer = new TileLayer({
       preload: Infinity,
       source: new OSM(),
@@ -57,6 +60,7 @@ const EntireHomePage = () => {
       }),
     });
 
+    // Here we create the actual map
     const map = new Map({
       target: "map",
       layers: [osmLayer, vectorLayer],
@@ -65,6 +69,9 @@ const EntireHomePage = () => {
         zoom: 12,
       }),
     });
+    // I decided to not show the entire page before everything had loaded.
+    // This is because the map broke the page if used before map finished loading.
+    // Once done, it checks if both carousel and map has finished loading
     setMapLoading(false);
     if (!imageLoading && !mapLoading) {
       setLoading(false);
@@ -72,6 +79,9 @@ const EntireHomePage = () => {
     // @ts-ignore Package doesn't work correctly with typescript, and cannot set null as a type
     return () => map.setTarget(null);
   }, [imageLoading, lilBitsWebMercator, mapLoading]);
+
+  // Here we load the image carousel.
+  // Once done, it checks if both carousel and map has finished loading
 
   useEffect(() => {
     const mountArray = shuffle(carouselImages);
@@ -82,11 +92,13 @@ const EntireHomePage = () => {
     }
   }, [imageLoading, mapLoading]);
 
+  // If map and image carousel hasn't finished loading, page shows the loading component.
   if (loading) {
     return <Loading />;
   }
 
   return (
+    // motion.div is for the framer motion package, which creates a subtle animation.
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -97,6 +109,9 @@ const EntireHomePage = () => {
       <div className={styles.order_container}>
         <div className={styles.order_box}>
           <p className={styles.order_text}>Go to our order screen!</p>
+
+          {/* On click, this button disappears and shows a loading circle */}
+
           {!nextPageLoading ? (
             <LinkButton
               link="/select-dish"

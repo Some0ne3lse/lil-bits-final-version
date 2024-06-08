@@ -11,12 +11,15 @@ type ImageListType = {
 };
 
 const TheCarousel = ({ imageList }: ImageListType) => {
+  // Importing stuff from embla. Loop creates a loop, autoplay makes it play automatically
   const [emblaRef, emblaApi] = UseEmblaCarousel({ loop: true }, [Autoplay()]);
 
+  // To scroll to previous image
   const scrollPrev = useCallback(() => {
     if (emblaApi) emblaApi.scrollPrev();
   }, [emblaApi]);
 
+  // To scroll to next image
   const scrollNext = useCallback(() => {
     if (emblaApi) emblaApi.scrollNext();
   }, [emblaApi]);
@@ -42,11 +45,11 @@ const TheCarousel = ({ imageList }: ImageListType) => {
           <div className={styles.embla__container}>
             {imageList.map((data, index) => (
               <div className={styles.embla__slide} key={index}>
+                {/* To control sizes in css, width is 100% and height set to auto.
+                This is for making me able to change sizes depending on screen width */}
                 <Image
                   className={styles.carousel_images}
                   src={data}
-                  width={0}
-                  height={0}
                   sizes="100vw"
                   style={{ width: "100%", height: "auto", borderRadius: 8 }}
                   alt="Image of one of our dishes"
