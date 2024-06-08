@@ -113,6 +113,16 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  animation: fadeIn 2s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .fetching_image {
