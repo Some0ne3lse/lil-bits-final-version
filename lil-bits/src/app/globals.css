@@ -153,7 +153,13 @@ some parts of it requires it to be in globals.css */
 
 .react-datepicker * {
   font-size: 16px !important;
-  margin: 0 !important;
+}
+
+.react-datepicker__day,
+.react-datepicker__day--019,
+.react-datepicker__day--selected,
+.react-datepicker__day-name {
+  margin: 0.1rem !important;
 }
 
 .react-datepicker-wrapper {
