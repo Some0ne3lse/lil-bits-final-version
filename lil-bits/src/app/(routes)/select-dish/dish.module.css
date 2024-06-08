@@ -39,12 +39,11 @@
 .dish_description_scroll {
   overflow: scroll;
   overflow-x: hidden;
-  height: 90%;
+  height: 100%;
 }
 
 .dish_price {
   font-weight: 700;
-  margin: 0.25rem 0.5rem 0.5rem;
 }
 
 .dish_description_title {
@@ -69,12 +68,12 @@
 }
 
 .current_order_text {
-  margin: 1rem 0.5rem 0.25rem;
   color: #a86e5f;
 }
 
 .current_order_dish {
   font-weight: 800;
+  margin: 0;
 }
 
 .generate_button {
@@ -100,6 +99,9 @@
   justify-content: center;
   align-items: center;
   margin: 0 0 0.7rem;
+  box-sizing: border-box;
+  gap: 0.5rem;
+  padding: 1rem;
 }
 
 .dish_error {
@@ -148,6 +150,11 @@
   .dish_description_box {
     margin: 0 0 1rem;
     width: 100%;
+    padding: 1rem 0;
+  }
+
+  .dish_description_text {
+    margin: 1rem;
   }
 
   .generate_button {
