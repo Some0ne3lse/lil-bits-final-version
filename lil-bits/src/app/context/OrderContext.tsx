@@ -30,7 +30,6 @@ type OrderContextType = {
   setOrderAmount: Dispatch<SetStateAction<number>>;
   orderEmail: string | null;
   setOrderEmail: Dispatch<SetStateAction<string | null>>;
-  drinksAmountCounter: (id: string) => number;
 };
 
 // I used chatGPT for the drinksAmountCounter type in OrderContextType and OrderContext.
@@ -49,7 +48,6 @@ const OrderContext = createContext<OrderContextType>({
   setOrderAmount: () => Number,
   orderEmail: null,
   setOrderEmail: () => String,
-  drinksAmountCounter: () => 0,
 });
 
 // useOrder is the function we extract to every page that use to actually use the context
@@ -68,16 +66,6 @@ const OrderProvider = ({ children }: OrderProviderProps) => {
   const [orderAmount, setOrderAmount] = useState<number>(1);
   const [orderEmail, setOrderEmail] = useState<string | null>(null);
 
-  const drinksAmountCounter = (id: string) => {
-    let counter = 0;
-    for (const item of drinks) {
-      if (item.id === id) {
-        counter += 1;
-      }
-    }
-    return counter;
-  };
-
   return (
     <OrderContext.Provider
       value={{
@@ -93,7 +81,6 @@ const OrderProvider = ({ children }: OrderProviderProps) => {
         setOrderAmount,
         orderEmail,
         setOrderEmail,
-        drinksAmountCounter,
       }}
     >
       {children}

@@ -9,8 +9,7 @@ import Loading from "@/app/loading";
 import { motion } from "framer-motion";
 
 const AllDrinks = () => {
-  const { drinksAmountCounter, setDrinks, menuItems, setMenuItems } =
-    useOrder();
+  const { drinks, setDrinks, menuItems, setMenuItems } = useOrder();
   const [error, setError] = useState<string | null>();
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -58,6 +57,16 @@ const AllDrinks = () => {
       setDrinks([]);
     }
   }, [menuItems, setDrinks]);
+
+  const drinksAmountCounter = (id: string) => {
+    let counter = 0;
+    for (const item of drinks) {
+      if (item.id === id) {
+        counter += 1;
+      }
+    }
+    return counter;
+  };
 
   const resetForm = () => {
     setMenuItems(null);
