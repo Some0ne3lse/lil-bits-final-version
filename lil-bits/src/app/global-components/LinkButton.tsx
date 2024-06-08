@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { SetStateAction } from "react";
 
 type LinkProps = {
   link: string;
@@ -8,6 +7,8 @@ type LinkProps = {
 };
 
 const LinkButton = ({ link, text, setLoading }: LinkProps) => {
+  // This is the button to navigate to next page.
+  // The setLoading code is to start the loading spinner, so user wont click again and again
   return (
     <div>
       <Link href={link}>
