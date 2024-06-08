@@ -1,7 +1,6 @@
 "use client";
 import { api } from "@/app/api/api";
 import MealDescription from "./MealDescription";
-import MealImage from "./MealImage";
 import ReturnToHomepage from "@/app/global-components/ReturnToHomepage";
 import { useOrder } from "@/app/context/OrderContext";
 import { Dish } from "@/app/types/types";
@@ -14,11 +13,15 @@ import MotionComponent from "./MealImage";
 import ReactLoading from "react-loading";
 
 const AllMeals = () => {
-  const { menuItems, setMenuItems } = useOrder();
-  const { dish, setDish } = useOrder();
+  // For communicating with context
+  const { menuItems, setMenuItems, dish, setDish } = useOrder();
+  // If there are any errors they get set here
   const [error, setError] = useState<string | null>();
+  // For setting wether info is loading or not
   const [loading, setLoading] = useState<boolean>(true);
+  // If page has loaded, selecting another meal starts loading that only influences the meal part of the app
   const [mealLoading, setMealLoading] = useState<boolean>(false);
+  // Starts the loading circle after selecting navigate to next page
   const [nextPageLoading, setNextPageLoading] = useState<boolean>(false);
 
   const mealsPrice = 4500;

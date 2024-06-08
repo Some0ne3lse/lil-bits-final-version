@@ -29,10 +29,15 @@ const shuffle = (array: StaticImageData[]) =>
   [...array].sort(() => Math.random() - 0.5);
 
 const EntireHomePage = () => {
+  // For setting the images for the carousel
   const [imageList, setImageList] = useState(carouselImages);
+  // For loading the page
   const [loading, setLoading] = useState<boolean>(true);
+  // To show when image is done loading
   const [imageLoading, setImageLoading] = useState<boolean>(true);
+  // To show when map is done loading
   const [mapLoading, setMapLoading] = useState<boolean>(true);
+  // Starts the loading circle after selecting navigate to next page
   const [nextPageLoading, setNextPageLoading] = useState<boolean>(false);
 
   // Takes coordinates and makes them useable for map

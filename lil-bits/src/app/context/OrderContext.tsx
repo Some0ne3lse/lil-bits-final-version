@@ -67,6 +67,8 @@ const OrderProvider = ({ children }: OrderProviderProps) => {
   const [orderEmail, setOrderEmail] = useState<string | null>(null);
 
   return (
+    // OrderContext.Provider wraps around all it's children. All children can then use the context
+    // In layout.tsx you can see that I wrapped it around the entire body, so all components can use them
     <OrderContext.Provider
       value={{
         menuItems,
