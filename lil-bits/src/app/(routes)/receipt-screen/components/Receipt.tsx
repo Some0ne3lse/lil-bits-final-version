@@ -127,6 +127,12 @@ const Receipt = () => {
                 priority
               />
             </div>
+
+            {/* Image fill and sizes are set as it is so I can control it in the css.
+              This is mostly so I can change sizes depending on screens
+              As I wrote this, I learned about changing through imageSizes in the
+              next.config.js, but I am running low on time, so it is as it is */}
+
             <div className={styles.drink_grid}>
               {receipt.drinks.map((item, index) => (
                 <div key={index} className={styles.drinks_content}>
