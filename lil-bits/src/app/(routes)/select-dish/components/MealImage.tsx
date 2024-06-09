@@ -7,6 +7,7 @@ type ImageType = {
 };
 
 // This is just the component to show the meal image
+// For any future developers, remember to edit next.config.mjs to allow images from other sites
 const MealImage = ({ imageSource }: ImageType) => {
   return (
     <motion.div

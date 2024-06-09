@@ -403,6 +403,9 @@ const DateAmountEmailForm = () => {
                 // If not, it creates a new order with the addOrder function.
 
                 // If it doesn't follow the date rules, we get a small error below the input.
+                // I did it this way, because if you make the order on a weekend,
+                // the default value would be that day, and the user would be able to select that day and time,
+                // even though we filter time and dates in the date-picker code
                 onClick={handleSubmit((data) => {
                   data.count = count;
                   if (isWeekDay(data.date)) {

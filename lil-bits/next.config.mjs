@@ -3,7 +3,6 @@
 // Used chatGPT to make sure this file is the same as next.config.js
 const nextConfig = {
   images: {
-    formats: ["image/avif", "image/webp"],
     remotePatterns: [
       {
         protocol: "https",

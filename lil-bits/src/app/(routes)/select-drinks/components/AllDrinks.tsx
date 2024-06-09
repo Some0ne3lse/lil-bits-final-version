@@ -119,6 +119,7 @@ const AllDrinks = () => {
   }
 
   // If everything goes right, this will display all drinks
+  // For future developers, remember to edit next.config.mjs for images from other sites
   return (
     <motion.div
       initial={{ opacity: 0 }}

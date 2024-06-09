@@ -5,35 +5,54 @@ import { OrderType } from "@/app/types/types";
 import { useCallback, useEffect, useState } from "react";
 import styles from "../receipt.module.css";
 import Image from "next/image";
+import Loading from "@/app/loading";
 
+// This is the receipt itself
 const Receipt = () => {
+  // Import menuItems so we can make sure the order got saved in the server later
   const { menuItems } = useOrder();
+  // After fetching, we set the order to receipt
   const [receipt, setReceipt] = useState<OrderType | null>(menuItems);
+  // Error for any error handling
   const [error, setError] = useState<string | null>(null);
+  // Loading to display loading screen
+  const [loading, setLoading] = useState<boolean>(true);
 
+  // To make sure that we saved the server, we have this code
   const getOrdersFromServer = useCallback(async (email: string) => {
     const fetchOrders = await api.getOrders(email).catch((error) => {
+      // If we have any errors, they are shown here
       setError(
         "ERROR: '" +
           error.message +
           "' Please check your internet connection or contact customer service"
       );
     });
+    // If fetch is a success we set the order to receipt
     if (fetchOrders) {
       setReceipt(fetchOrders);
     }
+    // Then we stop loading screen
+    setLoading(false);
   }, []);
 
+  // This code runs on page load.
   useEffect(() => {
+    // We should have menuItems from order-screen, so we take the email from that,
+    // and search the server for that email.
+    // Then we know the meal is in the server
     if (menuItems) {
       getOrdersFromServer(menuItems?.email);
     } else {
+      // If something went wrong, we stop the loading and show this text
+      setLoading(false);
       setError(
         "There was an issue getting your order. Please try again without updating"
       );
     }
   }, [getOrdersFromServer, menuItems]);
 
+  // This function is for setting the date format
   const formatDate = (date: Date) => {
     return new Date(date).toLocaleDateString("en-GB", {
       hour: "2-digit",
@@ -41,14 +60,22 @@ const Receipt = () => {
     });
   };
 
+  // Show loading screen if page is loading
+  if (loading) {
+    return <Loading />;
+  }
+
+  // First we check if receipt has all the info and that it is not null
   if (
-    receipt?.date &&
-    receipt?.email &&
+    receipt !== null &&
+    receipt.date &&
+    receipt.email &&
     receipt.dish &&
     receipt.drinks &&
     receipt.price &&
     receipt.count
   ) {
+    // Then display all the data.
     return (
       <div className={styles.receipt_container}>
         <div className={styles.receipt_box}>
@@ -119,6 +146,7 @@ const Receipt = () => {
       </div>
     );
   } else {
+    // If something is missing, this is what gets shown
     return (
       <div className={styles.receipt_error_container}>
         <div className={styles.receipt_error_box}>

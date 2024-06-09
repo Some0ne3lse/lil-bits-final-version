@@ -5,11 +5,15 @@ import ReturnToHomepage from "@/app/global-components/ReturnToHomepage";
 import styles from "./receipt.module.css";
 import { motion } from "framer-motion";
 
+// This is the receipt screen
 const ReceiptScreen = () => {
+  // We start by importing setMenuItems, so we can empty it when we return to home page
   const { setMenuItems } = useOrder();
+
   const resetForm = () => {
     setMenuItems(null);
   };
+
   return (
     <main>
       <motion.div
