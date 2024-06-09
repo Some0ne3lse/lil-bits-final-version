@@ -6,6 +6,7 @@ type ImageType = {
   imageSource: string;
 };
 
+// This is just the component to show the meal image
 const MealImage = ({ imageSource }: ImageType) => {
   return (
     <motion.div
