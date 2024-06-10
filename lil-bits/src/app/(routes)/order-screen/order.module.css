@@ -35,8 +35,11 @@
   margin: 0 0.5rem 0.25rem;
 }
 
+.form_label_email {
+  margin: 0.25rem 0.5rem;
+}
+
 .form_label_amount,
-.form_label_email,
 .total_price_text {
   margin: 0.125rem 0.5rem;
 }
@@ -100,7 +103,7 @@
   border: 2px solid #a86e5f;
   width: 249px;
   display: block;
-  margin: 0.125rem auto;
+  margin: 0.25rem auto;
   padding: 1rem 0;
 }
 

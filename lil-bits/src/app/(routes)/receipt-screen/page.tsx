@@ -1,4 +1,4 @@
-import EntireReceiptScreen from "./EntireReceiptScreen";
+import EntireReceiptScreen from "./components/EntireReceiptScreen";
 
 const ReceiptScreen = () => {
   // Once again, I am not sure if this is the best way to do this.

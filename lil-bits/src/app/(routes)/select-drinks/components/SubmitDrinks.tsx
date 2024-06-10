@@ -2,7 +2,6 @@ import { useOrder } from "@/app/context/OrderContext";
 import LinkButton from "@/app/global-components/LinkButton";
 import RemoveDrinkButton from "./RemoveDrinkButton";
 import styles from "../drinks.module.css";
-import { motion } from "framer-motion";
 import ReactLoading from "react-loading";
 import { useState } from "react";
 

@@ -1,8 +1,8 @@
 "use client";
 import { useOrder } from "@/app/context/OrderContext";
-import Receipt from "./components/Receipt";
+import Receipt from "./Receipt";
 import ReturnToHomepage from "@/app/global-components/ReturnToHomepage";
-import styles from "./receipt.module.css";
+import styles from "../receipt.module.css";
 import { motion } from "framer-motion";
 
 // This is the receipt screen

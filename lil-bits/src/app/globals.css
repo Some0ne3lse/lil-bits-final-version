@@ -107,6 +107,8 @@ main {
   align-items: center;
 }
 
+/* I did the animation for the loader in here,
+since I couldn't get it to work properly with framer motion */
 .loader {
   margin-top: 10rem;
   display: flex;

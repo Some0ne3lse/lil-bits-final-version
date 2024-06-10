@@ -6,7 +6,6 @@ import Image from "next/image";
 import { useOrder } from "@/app/context/OrderContext";
 import { DrinkApiType, DrinksResponse } from "@/app/types/types";
 import Loading from "@/app/loading";
-import { motion } from "framer-motion";
 
 const AllDrinks = () => {
   // First we import from context

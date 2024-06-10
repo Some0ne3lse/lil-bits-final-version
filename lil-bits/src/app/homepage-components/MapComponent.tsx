@@ -1,5 +1,4 @@
 "use client";
-
 import "ol/ol.css";
 import styles from "../page.module.css";
 
@@ -8,7 +7,7 @@ type MapProps = {
 };
 
 // This is quite simple. Height and with set to 100% so it can be controlled by css
-// Id goes all the way back to main component, which controls what map we are using
+// ID goes all the way back to main component, which controls what map we are using
 
 const MapComponent = ({ mapId }: MapProps) => {
   return (

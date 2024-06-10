@@ -49,7 +49,3 @@ export type DrinkApiType = {
 export type DrinksResponse = {
   drinks: DrinkApiType[];
 }
-
-export type GenerateNewDishType = {
-  onClick: React.MouseEventHandler<HTMLButtonElement>
-}
