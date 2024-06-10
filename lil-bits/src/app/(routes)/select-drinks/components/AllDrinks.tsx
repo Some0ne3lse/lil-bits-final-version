@@ -104,29 +104,19 @@ const AllDrinks = () => {
     // If we have a server or other type of error, this is what shows
   } else if (!allDrinksFromServer || error) {
     return (
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ ease: "easeInOut", duration: 0.75 }}
-        className={styles.drinks_error_container}
-      >
+      <div className={styles.drinks_error_container}>
         <div className={styles.drinks_error_box}>
           <div className={styles.drinks_error}>{error}</div>
           <ReturnToHomepage text="Start over" onClick={resetForm} />
         </div>
-      </motion.div>
+      </div>
     );
   }
 
   // If everything goes right, this will display all drinks
   // For future developers, remember to edit next.config.mjs for images from other sites
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ ease: "easeInOut", duration: 0.75 }}
-      className={styles.drinks_container}
-    >
+    <div className={styles.drinks_container}>
       <div className={styles.all_drinks_box}>
         <div className={styles.all_drinks_scroll}>
           {/* To display the drinks, we map over them, then display them one by one,
@@ -167,7 +157,7 @@ const AllDrinks = () => {
           ))}
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

@@ -6,7 +6,6 @@
   align-items: center;
   padding: 0;
   margin: 0 0 0.7rem;
-  width: 100%;
 }
 
 .drinks_error_container {
@@ -133,7 +132,7 @@
 .remove_drink_button {
   color: red;
   width: 50%;
-  font-size: 2.5rem;
+  font-size: 2rem;
 }
 
 .drinks_price {

@@ -20,14 +20,9 @@ const SubmitDrinks = () => {
   // If we have no drinks selected, this is what shows
   if (drinks.length === 0) {
     return (
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ ease: "easeInOut", duration: 0.75 }}
-        className={styles.selected_drinks_container}
-      >
+      <div className={styles.selected_drinks_container}>
         <div className={styles.selected_drinks_box}>No drinks selected</div>
-      </motion.div>
+      </div>
     );
   }
 
@@ -49,12 +44,7 @@ const SubmitDrinks = () => {
   const totalDrinksPrice = drinksPrice.reduce((acc, curr) => acc + curr);
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ ease: "easeInOut", duration: 0.75 }}
-      className={styles.selected_drinks_container}
-    >
+    <div className={styles.selected_drinks_container}>
       <div className={styles.selected_drinks_box}>
         <div>Your Order:</div>
 
@@ -88,7 +78,7 @@ const SubmitDrinks = () => {
           color="#a86e5f"
         />
       )}
-    </motion.div>
+    </div>
   );
 };
 
