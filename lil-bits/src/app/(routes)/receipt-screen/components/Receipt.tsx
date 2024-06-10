@@ -122,8 +122,8 @@ const Receipt = () => {
                 className={styles.dish_image}
                 src={receipt.dish.imageSource}
                 alt={receipt.dish.name}
-                sizes="100%"
-                fill
+                width={100}
+                height={100}
                 priority
               />
             </div>
