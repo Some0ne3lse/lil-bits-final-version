@@ -10,6 +10,7 @@ const EntireDrinksPage = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ ease: "easeInOut", duration: 0.75 }}
+      className={styles.entire_drinks_page}
     >
       <AllDrinks />
       <SubmitDrinks />

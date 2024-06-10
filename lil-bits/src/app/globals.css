@@ -19,6 +19,7 @@ main {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  min-width: 100%;
 }
 
 .header {
