@@ -2,7 +2,7 @@
 import { useForm, Controller } from "react-hook-form";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import AmountPicker from "./AmountPicker";
 import { useRouter } from "next/navigation";
 import { useOrder } from "@/app/context/OrderContext";
@@ -81,6 +81,9 @@ const DateAmountEmailForm = () => {
   // I use router instead of link, so I can call it conditionally
   const router = useRouter();
 
+  // This is for scrolling down to the error box when it appears, mostly for small screens
+  const errorRef = useRef<HTMLDivElement>(null);
+
   const handleRedirect = () => {
     router.push("/receipt-screen");
   };
@@ -114,6 +117,9 @@ const DateAmountEmailForm = () => {
     } catch (err: unknown) {
       // We stop the loading spinner, so user can select an option
       setNextPageLoading(false);
+      () => {
+        errorRef.current?.scrollIntoView({ behavior: "smooth" });
+      };
       if (err instanceof Error) {
         // We don't really know what kind of error we'll get,
         // but if it's an instance of Error, we print the error.message,
@@ -126,6 +132,12 @@ const DateAmountEmailForm = () => {
       } else {
         setError("Something went wrong. Please contact customer service");
       }
+    } finally {
+      // On smaller screens, the error was to far down to notice, so I added this scroll effect
+      // It has a setTimeout because we need to create the error first
+      setTimeout(() => {
+        errorRef.current?.scrollIntoView({ behavior: "smooth" });
+      }, 200);
     }
   };
 
@@ -167,6 +179,10 @@ const DateAmountEmailForm = () => {
       } else {
         setError("Something went wrong. Please contact customer service");
       }
+    } finally {
+      setTimeout(() => {
+        errorRef.current?.scrollIntoView({ behavior: "smooth" });
+      }, 200);
     }
   };
 
@@ -511,7 +527,7 @@ const DateAmountEmailForm = () => {
       We also give the user the option to start over */}
 
       {error && (
-        <div className={styles.order_error_container}>
+        <div ref={errorRef} className={styles.order_error_container}>
           <div className={styles.order_error_box}>
             <div className={styles.order_error}>{error}</div>
             <ReturnToHomepage onClick={resetForm} text="Start over" />
