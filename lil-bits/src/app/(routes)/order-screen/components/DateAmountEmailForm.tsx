@@ -307,7 +307,6 @@ const DateAmountEmailForm = () => {
                     className="date_picker"
                     id="datePicker"
                     minDate={new Date()}
-                    isClearable
                     filterDate={isWeekDay}
                     filterTime={filterPassedTime}
                     disabledKeyboardNavigation

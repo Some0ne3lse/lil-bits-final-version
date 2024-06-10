@@ -1,9 +1,8 @@
 import EntireHomePage from "./homepage-components/EntireHomePage";
 
 const Home = () => {
-  // I put all code in EntireHomePage when I was creating the loading screen.
-  // At the time it was better, since I had header and footer here instead of in layout.tsx
-  // Might change this back later
+  // I put all code in EntireHomePage because in other pages we return
+  // different components depending on errors, and I want to keep the code consistent
   return (
     <main>
       <EntireHomePage />
