@@ -1,5 +1,7 @@
 This is my final assignment for NTV second semester.
 
+Created using v20.14.0 of node
+
 When you run npm install you will get three errors. As I understand, this is a problem with next, not my code.
 
 It is mostly to test if we have learned the different subjects, so not everything is as it would be for a real website.
