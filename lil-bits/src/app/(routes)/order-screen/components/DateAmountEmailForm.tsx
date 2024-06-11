@@ -90,7 +90,7 @@ const DateAmountEmailForm = () => {
 
   // We have two functions that almost do the same
   // updateOrder and addOrder
-  // One updates the other creates a new order
+  // One updates order the other creates a new order
   const updateOrder = async (data: FormFieldsType) => {
     // First we start the loading spinner so user has to wait
     setNextPageLoading(true);
@@ -133,8 +133,8 @@ const DateAmountEmailForm = () => {
         setError("Something went wrong. Please contact customer service");
       }
     } finally {
-      // On smaller screens, the error was to far down to notice, so I added this scroll effect
-      // It has a setTimeout because we need to create the error first
+      // On smaller screens, the error was too far down to notice, so I added this scroll effect
+      // It has a setTimeout because we need to create the error content first
       setTimeout(() => {
         errorRef.current?.scrollIntoView({ behavior: "smooth" });
       }, 200);
@@ -180,6 +180,8 @@ const DateAmountEmailForm = () => {
         setError("Something went wrong. Please contact customer service");
       }
     } finally {
+      // On smaller screens, the error was too far down to notice, so I added this scroll effect
+      // It has a setTimeout because we need to create the error content first
       setTimeout(() => {
         errorRef.current?.scrollIntoView({ behavior: "smooth" });
       }, 200);
@@ -244,7 +246,7 @@ const DateAmountEmailForm = () => {
     setOrderEmail(null);
   };
 
-  // If we got an order in the very beginning, we change the name of the button
+  // If we got an order, and therefore a menuItems in the very beginning, we change the name of the button
   let buttonName = "Create new order";
 
   if (menuItems) {
@@ -354,7 +356,7 @@ const DateAmountEmailForm = () => {
           </div>
 
           {/* This is the component for the amount of people.
-          More info in component itself */}
+          More info in component AmountPicker itself */}
 
           <Controller
             control={control}
@@ -411,13 +413,8 @@ const DateAmountEmailForm = () => {
               <button
                 className={styles.submit_button}
                 style={{ cursor: "pointer" }}
-                // When submit is pressed, we check if the date follows the rules we made,
-                // and if so, it does one of the following:
-                // If we have menuItems, we fetched an order all the way back in the first page,
-                // so we use the updateOrder function
-                // If not, it creates a new order with the addOrder function.
-
-                // If it doesn't follow the date rules, we get a small error below the input.
+                // When submit is pressed, we check if the date follows the rules we made
+                // If it doesn't follow the date rules, we get a small error below the input
                 // I did it this way, because if you make the order on a weekend,
                 // the default value would be that day, and the user would be able to select that day and time,
                 // even though we filter time and dates in the date-picker code
@@ -426,16 +423,22 @@ const DateAmountEmailForm = () => {
                   if (isWeekDay(data.date)) {
                     if (filterPassedTime(data.date)) {
                       if (menuItems) {
+                        // If we have menuItems, we fetched an order all the way back in the first page,
+                        // so we use the updateOrder function
                         updateOrder(data);
                       } else if (!menuItems) {
+                        // If we don't have menuItems, it creates a new order with the addOrder function.
+
                         addOrder(data);
                       }
                     } else {
+                      // If they selected a time before now
                       setDateError(
                         "You can only pick a time after current time"
                       );
                     }
                   } else {
+                    // If they selected a date in a weekend
                     setDateError(
                       "You can only pick a date and time from Monday to Friday, 16:00 - 23:00"
                     );
@@ -486,7 +489,7 @@ const DateAmountEmailForm = () => {
 
         {/* If we have an error and no menuItems, it is usually because of two
         things: 1: Server doesn't respond 2: There is an order with that email
-        in the system To deal with this, we give the user the option to update
+        in the system. To deal with this, we give the user the option to update
         the order in the system, with the selected email, or correct the email.
         They can also return to home page, which is defined later in the code */}
 

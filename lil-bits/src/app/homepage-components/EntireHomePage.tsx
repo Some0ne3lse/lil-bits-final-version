@@ -29,6 +29,8 @@ const shuffle = (array: StaticImageData[]) =>
   [...array].sort(() => Math.random() - 0.5);
 
 const EntireHomePage = () => {
+  // I put all the useEffects in here, so I can display a loading screen
+
   // For setting the images for the carousel
   const [imageList, setImageList] = useState(carouselImages);
   // For loading the page

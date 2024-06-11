@@ -7,10 +7,15 @@ import styles from "../page.module.css";
 import ReactLoading from "react-loading";
 
 const SearchForEmail = () => {
+  // To set the email
   const [email, setEmail] = useState<string>("");
+  // Import setMenuItems, when email is found
   const { setMenuItems } = useOrder();
+  // Error if anything goes wrong
   const [error, setError] = useState<string | null>(null);
+  // nextPageLoading for displaying loading spinner on button press
   const [nextPageLoading, setNextPageLoading] = useState<boolean>(false);
+  // router to navigate to next page conditionally
   const router = useRouter();
 
   // This function gets order previously sent to server, using the api from api.ts
