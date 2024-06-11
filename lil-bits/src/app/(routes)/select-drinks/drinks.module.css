@@ -50,6 +50,7 @@
   align-items: center;
 }
 
+/* Overflow here since array of drinks is long */
 .all_drinks_scroll {
   overflow: scroll;
   overflow-x: hidden;
@@ -67,6 +68,7 @@
   padding: 0.5rem;
 }
 
+/* Div to show counter on top of image */
 .image_and_counter {
   width: 80%;
   height: 6rem;
@@ -74,12 +76,13 @@
   position: relative;
   margin: 0 0 0.25rem;
 }
-
+/* Drink image controlled by parent */
 .drink_image {
   object-fit: cover;
   border-radius: 1rem;
 }
 
+/* Drink counter is absolute, so it is on top of image */
 .drink_counter {
   position: absolute;
   top: 50%;
@@ -198,6 +201,8 @@
 }
 
 @media (min-width: 1201px) {
+  /* Making entire page this size, so it looks ok on bigger screens */
+
   .entire_drinks_page {
     width: 1201px;
   }

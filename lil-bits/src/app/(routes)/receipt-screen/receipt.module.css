@@ -158,6 +158,8 @@
 }
 
 @media (min-width: 1201px) {
+  /* Making entire page this size, so it looks ok on bigger screens */
+
   .receipt_screen {
     width: 1201px;
   }

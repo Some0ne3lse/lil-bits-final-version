@@ -30,10 +30,14 @@ main {
   height: 6rem;
 }
 
+/* This is to show the active part of the header */
+
 .active {
   padding: 10px;
   border-radius: 10px;
 }
+
+/* This hides the page you're not on */
 
 .inactive {
   display: none;
@@ -77,6 +81,7 @@ main {
   margin: 0.5rem;
 }
 
+/* This hides the unavailable times in the date-picker */
 .react-datepicker__time-container
   .react-datepicker__time
   .react-datepicker__time-box
@@ -95,6 +100,7 @@ main {
   margin: 0 0 0.7rem;
 }
 
+/* When we hover over any button, we give them this color */
 .link_button:hover,
 .return_to_home_button:hover {
   background-color: #575e43;
@@ -153,6 +159,8 @@ some parts of it requires it to be in globals.css */
   width: 100%;
 }
 
+/* Font size is smaller in the date-picker, since it has to fit on small screens */
+
 .react-datepicker * {
   font-size: 16px !important;
 }
@@ -192,6 +200,7 @@ some parts of it requires it to be in globals.css */
 }
 
 @media (min-width: 1024px) {
+  /* On bigger screens we show all page names, but highlight the active one */
   .active {
     background-color: #575e43;
     color: white;
